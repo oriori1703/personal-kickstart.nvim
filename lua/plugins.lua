@@ -3,7 +3,7 @@
 require 'kickstart.plugins.guess-indent'
 require 'kickstart.plugins.gitsigns'
 require 'kickstart.plugins.which-key'
-require 'kickstart.plugins.tokyonight'
+-- require 'kickstart.plugins.tokyonight'
 require 'kickstart.plugins.todo-comments'
 require 'kickstart.plugins.mini'
 require 'kickstart.plugins.telescope'
@@ -29,8 +29,8 @@ require 'kickstart.plugins.treesitter'
 
 -- NOTE: You can add your own plugins, configuration, etc. in `lua/custom/plugins/*.lua`.
 --
--- For independent modules, uncomment the convenience loader:
--- require 'custom.plugins'
+-- Load independent modules through the convenience loader:
+require 'custom.plugins'
 --
 -- `custom.plugins` automatically loads files from that directory, but their
 -- order is unspecified. If plugins depend on each other, keep them in the same
