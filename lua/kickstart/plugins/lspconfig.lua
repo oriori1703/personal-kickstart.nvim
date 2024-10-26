@@ -217,6 +217,9 @@ return {
           -- clangd = {},
           -- gopls = {},
           pyright = {},
+          ruff = {
+            on_attach = function(client) client.server_capabilities.hoverProvider = false end,
+          },
           -- rust_analyzer = {},
           -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
           --
