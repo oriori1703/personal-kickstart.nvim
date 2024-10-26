@@ -117,6 +117,8 @@ local servers = {
   -- But for many setups, the LSP (`rust_analyzer`) will work just fine
   -- rust_analyzer = {},
 
+  taplo = {},
+
   stylua = {}, -- Used to format Lua code
 
   -- Special Lua Config, as recommended by neovim help docs
