@@ -106,6 +106,9 @@ local servers = {
   -- clangd = {},
   -- gopls = {},
   pyright = {},
+  ruff = {
+    on_attach = function(client) client.server_capabilities.hoverProvider = false end,
+  },
   -- tsc = {},
   --
   -- Some languages (like rust) have entire language plugins that can be useful:
