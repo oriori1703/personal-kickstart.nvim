@@ -77,6 +77,7 @@ vim.keymap.set('n', '<leader>B', function()
 
   customize_bp(find_bp())
 end, { desc = 'Debug: Edit Breakpoint' })
+vim.keymap.set('n', '<Leader>lp', function() require('dap').set_breakpoint(nil, nil, vim.fn.input 'Log point message: ') end, { desc = 'Debug: Set Logpoint' })
 -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
 vim.keymap.set('n', '<F7>', function() require('dapui').toggle() end, { desc = 'Debug: See last session result.' })
 
