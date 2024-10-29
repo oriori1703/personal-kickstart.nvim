@@ -126,7 +126,7 @@
       "version": "'main'"
     },
     "nvim-treesitter-context": {
-      "rev": "5bd21aa75aa9e24c0680b23fc88380cd80a53641",
+      "rev": "f1b728501ef263d1cf344263c675d7d146a15239",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-context"
     },
     "nvim-web-devicons": {
