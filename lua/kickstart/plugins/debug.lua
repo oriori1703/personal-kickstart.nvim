@@ -96,6 +96,13 @@ return {
       end,
       desc = 'Debug: Edit Breakpoint',
     },
+    {
+      '<Leader>lp',
+      function()
+        require('dap').set_breakpoint(nil, nil, vim.fn.input 'Log point message: ')
+      end,
+      desc = 'Debug: Set Logpoint',
+    },
     -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
     { '<F7>', function() require('dapui').toggle() end, desc = 'Debug: See last session result.' },
   },
