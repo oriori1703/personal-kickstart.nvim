@@ -216,7 +216,7 @@ return {
         mason = {
           -- clangd = {},
           -- gopls = {},
-          pyright = {},
+          basedpyright = {},
           ruff = {
             on_attach = function(client) client.server_capabilities.hoverProvider = false end,
           },
