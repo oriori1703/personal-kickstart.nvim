@@ -105,7 +105,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 local servers = {
   -- clangd = {},
   -- gopls = {},
-  pyright = {},
+  basedpyright = {},
   ruff = {
     on_attach = function(client) client.server_capabilities.hoverProvider = false end,
   },

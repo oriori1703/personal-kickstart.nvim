@@ -1,7 +1,7 @@
 {
   "plugins": {
     "LuaSnip": {
-      "rev": "4bf40748f6fe939bdcb69325918535b1c5edea51",
+      "rev": "29417eea5b7c4b6beda105ced072855101d9680e",
       "src": "https://github.com/L3MON4D3/LuaSnip",
       "version": "2.0.0 - 3.0.0"
     },
@@ -121,7 +121,7 @@
       "version": "master"
     },
     "nvim-treesitter": {
-      "rev": "dfd3207ed43a0c572c13acc02bf9d7dc270f4030",
+      "rev": "7dc8aabe86db8c2f23520e8334f7584f83e84342",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },

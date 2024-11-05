@@ -9,5 +9,5 @@
 - [x] code folding?
 - [ ] lazy-git?
 - [x] remap capslock to escape
-- [ ] use basedpyright?
+- [x] use basedpyright?
 
