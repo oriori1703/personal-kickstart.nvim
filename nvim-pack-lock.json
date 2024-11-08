@@ -149,6 +149,10 @@
       "src": "https://github.com/kevinhwang91/promise-async",
       "version": "main"
     },
+    "schemastore.nvim": {
+      "rev": "5f0639d68cbea3ab8a9a24a51a5f984d86ea8438",
+      "src": "https://github.com/b0o/schemastore.nvim"
+    },
     "statuscol.nvim": {
       "rev": "8822f76e105549620ef9c0d96e7b95aedf14c490",
       "src": "https://github.com/luukvbaal/statuscol.nvim"

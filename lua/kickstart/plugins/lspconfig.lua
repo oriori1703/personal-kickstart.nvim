@@ -100,6 +100,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+vim.pack.add { gh 'b0o/schemastore.nvim' } -- Provides the SchemaStore catalog for use with jsonls and yamlls
+
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 --  See `:help lsp-config` for information about keys and how to configure
@@ -120,6 +122,28 @@ local servers = {
   -- rust_analyzer = {},
 
   taplo = {},
+  jsonls = {
+    settings = {
+      json = {
+        schemas = require('schemastore').json.schemas(),
+        validate = { enable = true },
+      },
+    },
+  },
+  yamlls = {
+    settings = {
+      yaml = {
+        schemaStore = {
+          -- You must disable built-in schemaStore support if you want to use
+          -- this plugin and its advanced options like `ignore`.
+          enable = false,
+          -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+          url = '',
+        },
+        schemas = require('schemastore').yaml.schemas(),
+      },
+    },
+  },
 
   stylua = {}, -- Used to format Lua code
 
