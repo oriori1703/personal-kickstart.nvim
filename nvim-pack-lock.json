@@ -1,7 +1,7 @@
 {
   "plugins": {
     "LuaSnip": {
-      "rev": "29417eea5b7c4b6beda105ced072855101d9680e",
+      "rev": "2737edc9e674e537dc0a97e3405658d57d2d31ed",
       "src": "https://github.com/L3MON4D3/LuaSnip",
       "version": "2.0.0 - 3.0.0"
     },
@@ -72,7 +72,7 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "c8bc67a35e627908da644c5f8cd26b3f987f2627",
+      "rev": "998cfcf1fdd0a6830d0fc35f1c054a6f55de1e7f",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "neo-tree.nvim": {
@@ -99,7 +99,7 @@
       "version": "main"
     },
     "nvim-dap": {
-      "rev": "7ff6936010b7222fea2caea0f67ed77f1b7c60dd",
+      "rev": "8517126e9323e346f6a99b3b594c5a940b914dcd",
       "src": "https://github.com/mfussenegger/nvim-dap"
     },
     "nvim-dap-python": {
@@ -112,7 +112,7 @@
       "version": "master"
     },
     "nvim-lspconfig": {
-      "rev": "bc6ada4b0892b7f10852c0b8ca7209fd39a6d754",
+      "rev": "d01864641c6e43c681c3e9f6cf4745c75fdd9dcc",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -121,7 +121,7 @@
       "version": "master"
     },
     "nvim-treesitter": {
-      "rev": "7dc8aabe86db8c2f23520e8334f7584f83e84342",
+      "rev": "425b58968340bd5b4621c2a0d626c73556516d3d",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
@@ -150,7 +150,7 @@
       "version": "main"
     },
     "statuscol.nvim": {
-      "rev": "5998d16044159ad3779f62c45e756c555e3051f0",
+      "rev": "8822f76e105549620ef9c0d96e7b95aedf14c490",
       "src": "https://github.com/luukvbaal/statuscol.nvim"
     },
     "telescope-fzf-native.nvim": {
@@ -178,7 +178,7 @@
       "version": "master"
     },
     "which-key.nvim": {
-      "rev": "8badb359f7ab8711e2575ef75dfe6fbbd87e4821",
+      "rev": "68e37e12913a66b60073906f5d3f14dee0de19f2",
       "src": "https://github.com/folke/which-key.nvim"
     }
   }
