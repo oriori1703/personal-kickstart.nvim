@@ -10,6 +10,11 @@
       "src": "https://github.com/hrsh7th/cmp-nvim-lsp",
       "version": "main"
     },
+    "cmp-nvim-lsp-signature-help": {
+      "rev": "031e6ba70b0ad5eee49fd2120ff7a2e325b17fa7",
+      "src": "https://github.com/hrsh7th/cmp-nvim-lsp-signature-help",
+      "version": "main"
+    },
     "cmp-path": {
       "rev": "91ff86cd9c29299a64f968ebb45846c485725f23",
       "src": "https://github.com/hrsh7th/cmp-path",
@@ -21,7 +26,7 @@
       "version": "master"
     },
     "conform.nvim": {
-      "rev": "8ed162b0637d4c4f69ebe3e8e49b35662a82e137",
+      "rev": "a6f5bdb78caa305496357d17e962bbc4c0b392e2",
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "copilot.vim": {
@@ -38,7 +43,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "gitsigns.nvim": {
-      "rev": "2bc3b472bbc2484214549af4d9f38c127b886a55",
+      "rev": "4c40357994f386e72be92a46f41fc1664c84c87d",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "indent-blankline.nvim": {
@@ -47,15 +52,15 @@
       "version": "master"
     },
     "lazydev.nvim": {
-      "rev": "a1b78b2ac6f978c72e76ea90ae92a94edf380cfc",
+      "rev": "2367a6c0a01eb9edb0464731cc0fb61ed9ab9d2c",
       "src": "https://github.com/folke/lazydev.nvim"
     },
     "mason-lspconfig.nvim": {
-      "rev": "a8e6efcf623b86bae6d2223eede7c43883329f80",
+      "rev": "1a31f824b9cd5bc6f342fc29e9a53b60d74af245",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason-nvim-dap.nvim": {
-      "rev": "26ea08fd5c7028ea54a3347ac139fc916baf1aa9",
+      "rev": "09220b99d63d5363f219daa2785242ee5fddba7f",
       "src": "https://github.com/jay-babu/mason-nvim-dap.nvim"
     },
     "mason-tool-installer.nvim": {
@@ -63,15 +68,15 @@
       "src": "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim"
     },
     "mason.nvim": {
-      "rev": "e2f7f9044ec30067bc11800a9e266664b88cda22",
+      "rev": "fc98833b6da5de5a9c5b1446ac541577059555be",
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "1bd64e3ce49964cdfa9ee0e84c56f42d53b89052",
+      "rev": "dc1775613f672e6a804577945813353c5c4e6fe5",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "neo-tree.nvim": {
-      "rev": "5d172e8315444dbc32867d1c7b04d8e7e68ec4e1",
+      "rev": "e96fd85bf18bc345dab332b345098fa5460dffac",
       "src": "https://github.com/nvim-neo-tree/neo-tree.nvim",
       "version": "main"
     },
@@ -80,7 +85,7 @@
       "src": "https://github.com/MunifTanjim/nui.nvim"
     },
     "nvim": {
-      "rev": "0b2437bcc12b4021614dc41fcea9d0f136d94063",
+      "rev": "4bb938bbba41d306db18bf0eb0633a5f28fd7ba0",
       "src": "https://github.com/catppuccin/nvim",
       "version": "main"
     },
@@ -107,7 +112,7 @@
       "version": "master"
     },
     "nvim-lspconfig": {
-      "rev": "31226f6736a8150e323b346e4748e3c9bdd6bef5",
+      "rev": "7c8cb61b21727a473663054edec4b83633d9e442",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -116,16 +121,16 @@
       "version": "master"
     },
     "nvim-treesitter": {
-      "rev": "80e6de9d24eec68d82d5f4e6feae94c9c753ebd6",
+      "rev": "bf18d4dc8d9a7a61e855190bc154df12d6536741",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
     "nvim-treesitter-context": {
-      "rev": "03f382ef224c27a8508cdab2d0b463dcb8ca12a6",
+      "rev": "198720b4016af04c9590f375d714d5bf8afecc1a",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-context"
     },
     "nvim-ufo": {
-      "rev": "81f5ffa6e8ba27c48403cf681d4b383d924e03e4",
+      "rev": "a52c92c3bbaa10f0c9b547a50adaa8c7d8b29f94",
       "src": "https://github.com/kevinhwang91/nvim-ufo",
       "version": "main"
     },
@@ -145,7 +150,7 @@
       "version": "main"
     },
     "schemastore.nvim": {
-      "rev": "97b08f928d355bd6d5dee595fdf667b5bfb6329f",
+      "rev": "589adb1f6d1e28b508e4d434a0cb7cbc2225c25f",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "statuscol.nvim": {
@@ -177,7 +182,7 @@
       "version": "master"
     },
     "which-key.nvim": {
-      "rev": "0e76a87ac51772569aec678dc74baa8e2a86100c",
+      "rev": "5bf7a73fe851896d5ac26d313db849bf00f45b78",
       "src": "https://github.com/folke/which-key.nvim"
     }
   }
