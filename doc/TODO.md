@@ -12,7 +12,7 @@
 - [x] use basedpyright?
 - [x] why rust analyzer works only on save?
 - [x] use rustaceanvim instead of rust-analyzer?
-- [ ] use rainbow-delimiters.nvim
+- [x] use rainbow-delimiters.nvim
 - [ ] obsidian.nvim ?
 - [ ] blink.cmp instead of instead of nvim-cmp?
 - [ ] github/gitlab integration (maybe cmp-git?)

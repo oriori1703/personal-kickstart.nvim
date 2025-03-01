@@ -149,8 +149,12 @@
       "src": "https://github.com/kevinhwang91/promise-async",
       "version": "main"
     },
+    "rainbow-delimiters.nvim": {
+      "rev": "2619f1a13a0053afe2266b306908de27dc18978f",
+      "src": "https://github.com/HiPhish/rainbow-delimiters.nvim"
+    },
     "schemastore.nvim": {
-      "rev": "4ca0a3d3f77de2cc5efa497e75ab0e649cc0f66c",
+      "rev": "b649fb35ddb1863c9f40fedfd04f1f3829a62006",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "statuscol.nvim": {
