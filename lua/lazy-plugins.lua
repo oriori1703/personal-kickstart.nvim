@@ -88,6 +88,10 @@ require('lazy').setup({
       lazy = '💤 ',
     },
   },
+  git = {
+    filter = false, -- Disable --filter for git clone to make it easier to copy the plugins for offline use
+    url_format = 'https://github.com/%s.git', -- Explicitly use the default URL format to make it easier to change on corporate networks
+  },
 })
 
 -- vim: ts=2 sts=2 sw=2 et
