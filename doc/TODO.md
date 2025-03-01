@@ -17,4 +17,4 @@
 - [ ] blink.cmp instead of instead of nvim-cmp?
 - [ ] github/gitlab integration (maybe cmp-git?)
 - [ ] switch to copilot.lua + copilot-cmp?
-- [ ] spellchecker
+- [x] spellchecker
