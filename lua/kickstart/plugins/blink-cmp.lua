@@ -15,7 +15,10 @@ vim.pack.add { gh 'rafamadriz/friendly-snippets' }
 require('luasnip.loaders.from_vscode').lazy_load()
 
 -- [[ Autocomplete Engine ]]
-vim.pack.add { { src = gh 'saghen/blink.cmp', version = vim.version.range '1.*' } }
+vim.pack.add {
+  { src = gh 'saghen/blink.cmp', version = vim.version.range '1.*' },
+  gh 'giuxtaposition/blink-cmp-copilot',
+}
 require('blink.cmp').setup {
   keymap = {
     -- 'default' (recommended) for mappings similar to built-in completions
@@ -63,6 +66,7 @@ require('blink.cmp').setup {
       'path',
       'snippets',
       'buffer',
+      'copilot',
     },
     providers = {
       buffer = {
@@ -77,6 +81,12 @@ require('blink.cmp').setup {
           local filetype = vim.bo.filetype
           return vim.tbl_contains(enabled_filetypes, filetype)
         end,
+      },
+      copilot = {
+        name = 'copilot',
+        module = 'blink-cmp-copilot',
+        score_offset = 100,
+        async = true,
       },
     },
   },
