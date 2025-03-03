@@ -23,14 +23,13 @@ return {
           --    https://github.com/rafamadriz/friendly-snippets
           {
             'rafamadriz/friendly-snippets',
-            config = function()
-              require('luasnip.loaders.from_vscode').lazy_load()
-            end,
+            config = function() require('luasnip.loaders.from_vscode').lazy_load() end,
           },
         },
         opts = {},
       },
       'folke/lazydev.nvim',
+      'giuxtaposition/blink-cmp-copilot',
     },
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
@@ -76,7 +75,7 @@ return {
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'lazydev', 'buffer' },
+        default = { 'lsp', 'path', 'snippets', 'lazydev', 'buffer', 'copilot' },
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
           buffer = {
@@ -91,6 +90,12 @@ return {
               local filetype = vim.bo.filetype
               return vim.tbl_contains(enabled_filetypes, filetype)
             end,
+          },
+          copilot = {
+            name = 'copilot',
+            module = 'blink-cmp-copilot',
+            score_offset = 100,
+            async = true,
           },
           -- On WSL2, blink.cmp may cause the editor to freeze due to a known limitation.
           -- To address this issue, uncomment the following configuration:
