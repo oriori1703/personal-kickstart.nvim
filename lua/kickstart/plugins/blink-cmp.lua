@@ -28,6 +28,7 @@ return {
         },
         opts = {},
       },
+      'giuxtaposition/blink-cmp-copilot',
     },
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
@@ -73,7 +74,7 @@ return {
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
         providers = {
           buffer = {
             -- Make buffer compeletions appear at the end.
@@ -87,6 +88,12 @@ return {
               local filetype = vim.bo.filetype
               return vim.tbl_contains(enabled_filetypes, filetype)
             end,
+          },
+          copilot = {
+            name = 'copilot',
+            module = 'blink-cmp-copilot',
+            score_offset = 100,
+            async = true,
           },
         },
       },
