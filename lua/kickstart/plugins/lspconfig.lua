@@ -121,6 +121,8 @@ local servers = {
   -- But for many setups, the LSP (`rust_analyzer`) will work just fine
   -- rust_analyzer = {},
 
+  bashls = {},
+
   taplo = {},
   jsonls = {
     settings = {
@@ -207,6 +209,8 @@ local ensure_installed = vim.tbl_keys(servers or {})
 vim.list_extend(ensure_installed, {
   -- You can add other tools here that you want Mason to install
   'markdownlint',
+  'shellcheck',
+  'shfmt',
 })
 
 require('mason-tool-installer').setup { ensure_installed = ensure_installed }
