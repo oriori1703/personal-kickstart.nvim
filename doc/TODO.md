@@ -1,4 +1,5 @@
 # Tasks
+
 - [ ] ~~mypy?~~
 - [x] copilot
 - [ ] none-ls vs conform + nvim-lint
