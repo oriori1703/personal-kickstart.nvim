@@ -3,7 +3,7 @@ return {
   'luukvbaal/statuscol.nvim',
   config = function()
     vim.opt.fillchars = vim.g.have_nerd_font and { foldclose = '', foldopen = '', foldsep = ' ' } or { foldclose = '˃', foldopen = '˅', foldsep = ' ' }
-    vim.opt.foldcolumn = '1'
+    vim.o.foldcolumn = '1'
 
     local builtin = require 'statuscol.builtin'
     require('statuscol').setup {

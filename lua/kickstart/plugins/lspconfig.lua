@@ -141,6 +141,8 @@ return {
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
 
+        bashls = {},
+
         taplo = {},
         jsonls = {
           settings = {
@@ -214,6 +216,8 @@ return {
       vim.list_extend(ensure_installed, {
         -- You can add other tools here that you want Mason to install
         'markdownlint',
+        'shellcheck',
+        'shfmt',
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
