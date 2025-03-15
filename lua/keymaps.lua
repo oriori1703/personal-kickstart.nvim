@@ -41,7 +41,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
 vim.keymap.set('n', 'zt', function()
-  vim.opt_local.spell = not vim.opt.spell:get()
+  vim.wo.spell = not vim.o.spell
 end, { desc = 'Toggle spell checking' })
 
 -- [[ Basic Autocommands ]]
