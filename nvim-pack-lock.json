@@ -77,11 +77,11 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "2d873a0eaa9f37b105c7751bb0a2e30eb448120d",
+      "rev": "18520ad6bbf7e6408b8449658326dc0c947c3507",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "neo-tree.nvim": {
-      "rev": "16854ed5559b940f69a6f7138906ebb22c15c553",
+      "rev": "9b5d67119c46e3262ffe1508fe6d8540b79ad75d",
       "src": "https://github.com/nvim-neo-tree/neo-tree.nvim",
       "version": "main"
     },
@@ -130,12 +130,12 @@
       "version": "master"
     },
     "nvim-treesitter": {
-      "rev": "8b79cddc708cb8549562f0101f7f509ad7cebf97",
+      "rev": "99ea6c5d4389a3278769eb6abb7b3ebefb7d9f2a",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
     "nvim-treesitter-context": {
-      "rev": "198720b4016af04c9590f375d714d5bf8afecc1a",
+      "rev": "129fcc94fa986692926366e940a46f00d2a4abbe",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-context"
     },
     "nvim-ufo": {
@@ -144,7 +144,7 @@
       "version": "main"
     },
     "nvim-web-devicons": {
-      "rev": "ab4cfee554e501f497bce0856788d43cf2eb93d7",
+      "rev": "d0cafff5c4347a604a07edf7bb9a91fda7eb577e",
       "src": "https://github.com/nvim-tree/nvim-web-devicons",
       "version": "master"
     },
@@ -159,11 +159,11 @@
       "version": "main"
     },
     "rainbow-delimiters.nvim": {
-      "rev": "7a578f43b7390b5135242cc0b1b70addcc53a2d2",
+      "rev": "f4fc9f4812b1bbcbda78803317506045442e281d",
       "src": "https://github.com/HiPhish/rainbow-delimiters.nvim"
     },
     "schemastore.nvim": {
-      "rev": "26ffb0764d6fb08bade49f05ed6fae67bd5a7bdf",
+      "rev": "56d8ed0fa1516242085ba5e95d7f49fad50d5754",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "statuscol.nvim": {
