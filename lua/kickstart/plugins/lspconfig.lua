@@ -113,8 +113,9 @@ local servers = {
   ruff = {
     on_attach = function(client) client.server_capabilities.hoverProvider = false end,
   },
-  -- tsc = {},
-  --
+  tsc = {},
+  biome = {},
+
   -- Some languages (like rust) have entire language plugins that can be useful:
   --    https://github.com/mrcjkb/rustaceanvim
   --
