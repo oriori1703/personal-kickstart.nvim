@@ -87,7 +87,7 @@ local dapui = require 'dapui'
 require('mason-nvim-dap').setup {
   -- Makes a best effort to setup the various debuggers with
   -- reasonable debug configurations
-  automatic_installation = true,
+  automatic_installation = { exclude = { 'python' } },
 
   -- You can provide additional configuration to the handlers,
   -- see mason-nvim-dap README for more information
@@ -98,7 +98,7 @@ require('mason-nvim-dap').setup {
   ensure_installed = {
     -- Update this to ensure that you have the debuggers for the langs you want
     -- 'delve',
-    'python',
+    -- 'python',
   },
 }
 
@@ -186,6 +186,7 @@ dap.listeners.after.event_initialized['dapui_config'] = dapui.open
 dap.listeners.before.event_terminated['dapui_config'] = dapui.close
 dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
+require('dap-python').setup 'uv'
 -- Install golang specific config
 -- require('dap-go').setup {
 --   delve = {
