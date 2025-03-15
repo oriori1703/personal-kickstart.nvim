@@ -276,6 +276,8 @@ return {
           },
 
           bashls = {},
+
+          phpactor = {},
         },
         -- This table contains config for all language servers that are *not* installed via Mason.
         -- Structure is identical to the mason table from above.
@@ -301,8 +303,12 @@ return {
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'markdownlint',
+        -- bash
         'shellcheck',
         'shfmt',
+        -- php
+        'phpcs',
+        'php-cs-fixer',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
