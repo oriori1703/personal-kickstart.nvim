@@ -26,7 +26,7 @@
       "version": "master"
     },
     "conform.nvim": {
-      "rev": "db8a4a9edb217067b1d7a2e0362c74bfe9cc944d",
+      "rev": "f9ef25a7ef00267b7d13bfc00b0dea22d78702d5",
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "copilot-cmp": {
@@ -35,7 +35,7 @@
       "version": "master"
     },
     "copilot.lua": {
-      "rev": "30321e33b03cb924fdcd6a806a0dc6fa0b0eafb9",
+      "rev": "535ebb53880ae67e33d9e50b503d25f9ef3ca06c",
       "src": "https://github.com/zbirenbaum/copilot.lua.git",
       "version": "master"
     },
@@ -48,11 +48,11 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "gitsigns.nvim": {
-      "rev": "011dc6718bcebdf92a5336bb0da79189c3afe621",
+      "rev": "7010000889bfb6c26065e0b0f7f1e6aa9163edd9",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "indent-blankline.nvim": {
-      "rev": "e10626f7fcd51ccd56d7ffc00883ba7e0aa28f78",
+      "rev": "005b56001b2cb30bfa61b7986bc50657816ba4ba",
       "src": "https://github.com/lukas-reineke/indent-blankline.nvim",
       "version": "master"
     },
@@ -65,11 +65,11 @@
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason-nvim-dap.nvim": {
-      "rev": "09220b99d63d5363f219daa2785242ee5fddba7f",
+      "rev": "ea387e0819ab189d536bb4067e4d8ece3801a292",
       "src": "https://github.com/jay-babu/mason-nvim-dap.nvim"
     },
     "mason-tool-installer.nvim": {
-      "rev": "5639d58a3d11ff7c05c8e31e159bfedae55d7961",
+      "rev": "98767d37f8e5255a5111fc1e3163232d4dc07bda",
       "src": "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim"
     },
     "mason.nvim": {
@@ -77,7 +77,7 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "18520ad6bbf7e6408b8449658326dc0c947c3507",
+      "rev": "189010888bc37fc1c382f2dcc81b7a6441160686",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "neo-tree.nvim": {
@@ -95,7 +95,7 @@
       "version": "main"
     },
     "nvim-autopairs": {
-      "rev": "68f0e5c3dab23261a945272032ee6700af86227a",
+      "rev": "6522027785b305269fa17088395dfc0f456cedd2",
       "src": "https://github.com/windwp/nvim-autopairs"
     },
     "nvim-cmp": {
@@ -104,7 +104,7 @@
       "version": "main"
     },
     "nvim-dap": {
-      "rev": "a720d4966f758ab22e8ec28812b6df90a53e0f02",
+      "rev": "6a5bba0ddea5d419a783e170c20988046376090d",
       "src": "https://github.com/mfussenegger/nvim-dap"
     },
     "nvim-dap-python": {
@@ -117,11 +117,11 @@
       "version": "master"
     },
     "nvim-lint": {
-      "rev": "6e9dd545a1af204c4022a8fcd99727ea41ffdcc8",
+      "rev": "93b8040115c9114dac1047311763bef275e752dc",
       "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "8a1529e46eef5efc86c34c8d9bdd313abc2ecba0",
+      "rev": "85e0dd26b710e834a105d679200d01e326a3d2b0",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -130,12 +130,12 @@
       "version": "master"
     },
     "nvim-treesitter": {
-      "rev": "99ea6c5d4389a3278769eb6abb7b3ebefb7d9f2a",
+      "rev": "da5825bf70cc2ea7eacd1e60c32c07baf19adeba",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
     "nvim-treesitter-context": {
-      "rev": "129fcc94fa986692926366e940a46f00d2a4abbe",
+      "rev": "93b29a32d5f4be10e39226c6b796f28d68a8b483",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-context"
     },
     "nvim-ufo": {
@@ -144,7 +144,7 @@
       "version": "main"
     },
     "nvim-web-devicons": {
-      "rev": "d0cafff5c4347a604a07edf7bb9a91fda7eb577e",
+      "rev": "4c3a5848ee0b09ecdea73adcd2a689190aeb728c",
       "src": "https://github.com/nvim-tree/nvim-web-devicons",
       "version": "master"
     },
@@ -159,11 +159,11 @@
       "version": "main"
     },
     "rainbow-delimiters.nvim": {
-      "rev": "f1e5490e87478cf0b528250ebb51552f3d08436a",
+      "rev": "de39919a57e1a40a4c7dc5bae0de276f9c616ef3",
       "src": "https://github.com/HiPhish/rainbow-delimiters.nvim"
     },
     "schemastore.nvim": {
-      "rev": "56d8ed0fa1516242085ba5e95d7f49fad50d5754",
+      "rev": "d307d291f38678d064cb987112926df6d9134de3",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "statuscol.nvim": {
