@@ -15,9 +15,10 @@
 - [x] use rustaceanvim instead of rust-analyzer?
 - [x] use rainbow-delimiters.nvim
 - [ ] obsidian.nvim ?
-- [ ] blink.cmp instead of instead of nvim-cmp?
+- [X] blink.cmp instead of instead of nvim-cmp?
 - [ ] ~github/gitlab integration (maybe cmp-git?)~
 - [x] switch to copilot.lua + copilot-cmp?
 - [x] spellchecker
 - [ ] `cspell` / `typos` ?
-- [ ] lspkind?
+- [ ] ~~lspkind?~~ (not needed with blink.cmp)
+- [ ] telescope vs fzf-lua vs snacks.picker
