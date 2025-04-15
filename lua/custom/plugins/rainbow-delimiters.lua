@@ -1,1 +1,6 @@
-return { 'HiPhish/rainbow-delimiters.nvim' }
+--- @module 'lazy'
+--- @type LazySpec
+return {
+  'HiPhish/rainbow-delimiters.nvim',
+  submodules = false,
+}
