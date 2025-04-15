@@ -1,41 +1,26 @@
 {
   "plugins": {
     "LuaSnip": {
-      "rev": "c9b9a22904c97d0eb69ccb9bab76037838326817",
+      "rev": "03c8e67eb7293c404845b3982db895d59c0d1538",
       "src": "https://github.com/L3MON4D3/LuaSnip",
       "version": "2.0.0 - 3.0.0"
     },
-    "cmp-nvim-lsp": {
-      "rev": "99290b3ec1322070bcfb9e846450a46f6efa50f0",
-      "src": "https://github.com/hrsh7th/cmp-nvim-lsp",
+    "blink-cmp-copilot": {
+      "rev": "439cff78780c033aa23cf061d7315314b347e3c1",
+      "src": "https://github.com/giuxtaposition/blink-cmp-copilot",
       "version": "main"
     },
-    "cmp-nvim-lsp-signature-help": {
-      "rev": "031e6ba70b0ad5eee49fd2120ff7a2e325b17fa7",
-      "src": "https://github.com/hrsh7th/cmp-nvim-lsp-signature-help",
-      "version": "main"
-    },
-    "cmp-path": {
-      "rev": "91ff86cd9c29299a64f968ebb45846c485725f23",
-      "src": "https://github.com/hrsh7th/cmp-path",
-      "version": "main"
-    },
-    "cmp_luasnip": {
-      "rev": "98d9cb5c2c38532bd9bdb481067b20fea8f32e90",
-      "src": "https://github.com/saadparwaiz1/cmp_luasnip",
-      "version": "master"
+    "blink.cmp": {
+      "rev": "cb5e346d9e0efa7a3eee7fd4da0b690c48d2a98e",
+      "src": "https://github.com/saghen/blink.cmp",
+      "version": "1.0.0 - 2.0.0"
     },
     "conform.nvim": {
-      "rev": "f9ef25a7ef00267b7d13bfc00b0dea22d78702d5",
+      "rev": "eebc724d12c5579d733d1f801386e0ceb909d001",
       "src": "https://github.com/stevearc/conform.nvim"
     },
-    "copilot-cmp": {
-      "rev": "15fc12af3d0109fa76b60b5cffa1373697e261d1",
-      "src": "https://github.com/zbirenbaum/copilot-cmp",
-      "version": "master"
-    },
     "copilot.lua": {
-      "rev": "535ebb53880ae67e33d9e50b503d25f9ef3ca06c",
+      "rev": "4e8637c6049617881c3b178ca8dd7e8ee651c250",
       "src": "https://github.com/zbirenbaum/copilot.lua.git",
       "version": "master"
     },
@@ -44,11 +29,11 @@
       "src": "https://github.com/j-hui/fidget.nvim"
     },
     "friendly-snippets": {
-      "rev": "efff286dd74c22f731cdec26a70b46e5b203c619",
+      "rev": "31f2a2657b6261724313281fe0d8ba6f43f4a4fa",
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "gitsigns.nvim": {
-      "rev": "7010000889bfb6c26065e0b0f7f1e6aa9163edd9",
+      "rev": "fcfa7a989cd6fed10abf02d9880dc76d7a38167d",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "indent-blankline.nvim": {
@@ -65,11 +50,11 @@
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason-nvim-dap.nvim": {
-      "rev": "ea387e0819ab189d536bb4067e4d8ece3801a292",
+      "rev": "4c2cdc69d69fe00c15ae8648f7e954d99e5de3ea",
       "src": "https://github.com/jay-babu/mason-nvim-dap.nvim"
     },
     "mason-tool-installer.nvim": {
-      "rev": "98767d37f8e5255a5111fc1e3163232d4dc07bda",
+      "rev": "1255518cb067e038a4755f5cb3e980f79b6ab89c",
       "src": "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim"
     },
     "mason.nvim": {
@@ -77,7 +62,7 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "189010888bc37fc1c382f2dcc81b7a6441160686",
+      "rev": "a8b1d74f45dadf3554c0eed784c6ccd8ade67883",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "neo-tree.nvim": {
@@ -95,16 +80,11 @@
       "version": "main"
     },
     "nvim-autopairs": {
-      "rev": "6522027785b305269fa17088395dfc0f456cedd2",
+      "rev": "4d74e75913832866aa7de35e4202463ddf6efd1b",
       "src": "https://github.com/windwp/nvim-autopairs"
     },
-    "nvim-cmp": {
-      "rev": "1e1900b0769324a9675ef85b38f99cca29e203b3",
-      "src": "https://github.com/hrsh7th/nvim-cmp",
-      "version": "main"
-    },
     "nvim-dap": {
-      "rev": "6a5bba0ddea5d419a783e170c20988046376090d",
+      "rev": "7aade9e99bef5f0735cf966e715b3ce45515d786",
       "src": "https://github.com/mfussenegger/nvim-dap"
     },
     "nvim-dap-python": {
@@ -112,16 +92,16 @@
       "src": "https://github.com/mfussenegger/nvim-dap-python"
     },
     "nvim-dap-ui": {
-      "rev": "bc81f8d3440aede116f821114547a476b082b319",
+      "rev": "881a69e25bd6658864fab47450025490b74be878",
       "src": "https://github.com/rcarriga/nvim-dap-ui",
       "version": "master"
     },
     "nvim-lint": {
-      "rev": "93b8040115c9114dac1047311763bef275e752dc",
+      "rev": "5b1bdf306bd3e565908145279e8bbfc594dac3b3",
       "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "85e0dd26b710e834a105d679200d01e326a3d2b0",
+      "rev": "3a7387a9c980304059b2bd7075684d6ef98ff331",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -130,21 +110,21 @@
       "version": "master"
     },
     "nvim-treesitter": {
-      "rev": "da5825bf70cc2ea7eacd1e60c32c07baf19adeba",
+      "rev": "684eeac91ed8e297685a97ef70031d19ac1de25a",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
     "nvim-treesitter-context": {
-      "rev": "93b29a32d5f4be10e39226c6b796f28d68a8b483",
+      "rev": "439789a9a8df9639ecd749bb3286b77117024a6f",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-context"
     },
     "nvim-ufo": {
-      "rev": "a52c92c3bbaa10f0c9b547a50adaa8c7d8b29f94",
+      "rev": "a026364df62e88037b26d37c9f14c17c006fd577",
       "src": "https://github.com/kevinhwang91/nvim-ufo",
       "version": "main"
     },
     "nvim-web-devicons": {
-      "rev": "4c3a5848ee0b09ecdea73adcd2a689190aeb728c",
+      "rev": "c90dee4e930ab9f49fa6d77f289bff335b49e972",
       "src": "https://github.com/nvim-tree/nvim-web-devicons",
       "version": "master"
     },
@@ -159,11 +139,11 @@
       "version": "main"
     },
     "rainbow-delimiters.nvim": {
-      "rev": "de39919a57e1a40a4c7dc5bae0de276f9c616ef3",
+      "rev": "c921526c23fe94e3da5132fea5ca9ee3c3068a90",
       "src": "https://github.com/HiPhish/rainbow-delimiters.nvim"
     },
     "schemastore.nvim": {
-      "rev": "d307d291f38678d064cb987112926df6d9134de3",
+      "rev": "992285058ce208825eb1b9ac82fa6be7d76ffcc1",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "statuscol.nvim": {
@@ -181,9 +161,9 @@
       "version": "master"
     },
     "telescope.nvim": {
-      "rev": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026",
+      "rev": "a4ed82509cecc56df1c7138920a1aeaf246c0ac5",
       "src": "https://github.com/nvim-telescope/telescope.nvim",
-      "version": "0.1.x"
+      "version": "master"
     },
     "todo-comments.nvim": {
       "rev": "304a8d204ee787d2544d8bc23cd38d2f929e7cc5",
