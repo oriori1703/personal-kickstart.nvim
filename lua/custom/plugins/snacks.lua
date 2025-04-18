@@ -37,6 +37,13 @@ return {
     opts = {
       picker = {},
       explorer = {},
+      indent = {
+        scope = {
+          underline = true,
+          char = '▎',
+        },
+        animate = { enabled = false },
+      },
     },
 
     -- See `:help snacks-pickers-sources`
