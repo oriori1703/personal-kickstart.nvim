@@ -20,8 +20,6 @@ require('lazy').setup({
 
   require 'kickstart.plugins.which-key',
 
-  require 'kickstart.plugins.telescope',
-
   require 'kickstart.plugins.lspconfig',
 
   require 'kickstart.plugins.conform',
