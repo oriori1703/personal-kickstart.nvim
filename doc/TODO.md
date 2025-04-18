@@ -19,6 +19,7 @@
 - [ ] ~github/gitlab integration (maybe cmp-git?)~
 - [x] switch to copilot.lua + copilot-cmp?
 - [x] spellchecker
-- [ ] `cspell` / `typos` ?
+- [ ] `cspell` / `typos` / haper ?
 - [ ] ~~lspkind?~~ (not needed with blink.cmp)
 - [ ] telescope vs fzf-lua vs snacks.picker
+- [ ] smear-cursor.nvim?
