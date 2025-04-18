@@ -22,4 +22,4 @@
 - [ ] `cspell` / `typos` / haper ?
 - [ ] ~~lspkind?~~ (not needed with blink.cmp)
 - [ ] telescope vs fzf-lua vs snacks.picker
-- [ ] smear-cursor.nvim?
+- [x] smear-cursor.nvim?
