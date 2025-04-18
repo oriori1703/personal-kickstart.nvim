@@ -26,6 +26,7 @@ return {
         'python',
         'rust',
         'go',
+        'regex',
       }
       require('nvim-treesitter').install(parsers)
 
