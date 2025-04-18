@@ -20,7 +20,7 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "copilot.lua": {
-      "rev": "0b435497295f01e253f3c1777e02f4553da7f59d",
+      "rev": "b3988bb51e87a057fee79192c3cc0932a0360bf6",
       "src": "https://github.com/zbirenbaum/copilot.lua.git",
       "version": "master"
     },
@@ -33,7 +33,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "gitsigns.nvim": {
-      "rev": "d600d3922c1d001422689319a8f915136bb64e1e",
+      "rev": "02eafb1273afec94447f66d1a43fc5e477c2ab8a",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "indent-blankline.nvim": {
@@ -62,7 +62,7 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "6be765891c95242f6b8ebd3a25aa285ab3e9f6de",
+      "rev": "ed581c333798e08a68fbe1aecfdf95d3c1432d3f",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "neo-tree.nvim": {
@@ -101,7 +101,7 @@
       "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "1a3a429efec62af632dfd8fa9b52fa226f655ec2",
+      "rev": "b70b900fba6e3255a5a8113c76f213102564cb0d",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -145,6 +145,10 @@
     "schemastore.nvim": {
       "rev": "992285058ce208825eb1b9ac82fa6be7d76ffcc1",
       "src": "https://github.com/b0o/schemastore.nvim"
+    },
+    "smear-cursor.nvim": {
+      "rev": "cb67711016caad914e44b8d074ff1fb67845b4aa",
+      "src": "https://github.com/sphamba/smear-cursor.nvim"
     },
     "statuscol.nvim": {
       "rev": "c399884e8f64019ec9bb581251f9710915b7f996",
