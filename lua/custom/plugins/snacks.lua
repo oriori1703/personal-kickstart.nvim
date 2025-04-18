@@ -31,6 +31,13 @@ vim.pack.add { gh 'folke/snacks.nvim' }
 require('snacks').setup {
   picker = {},
   explorer = {},
+  indent = {
+    scope = {
+      underline = true,
+      char = '▎',
+    },
+    animate = { enabled = false },
+  },
 }
 
 -- See `:help snacks.nvim-picker-sources`
