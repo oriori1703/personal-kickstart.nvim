@@ -47,6 +47,8 @@ vim.keymap.set('n', '<leader><leader>', function() Snacks.picker.buffers() end, 
 vim.keymap.set('n', '<leader>/', function() Snacks.picker.lines {} end, { desc = '[/] Fuzzily search in current buffer' })
 vim.keymap.set('n', '<leader>s/', function() Snacks.picker.grep_buffers {} end, { desc = '[S]earch [/] in Open Files' })
 
+vim.keymap.set('n', '\\', function() Snacks.explorer() end, { desc = 'File Explorer' })
+
 -- Add picker-based LSP mappings when an LSP attaches to a buffer.
 -- If you later switch picker plugins, this is where to update these mappings.
 vim.api.nvim_create_autocmd('LspAttach', {
