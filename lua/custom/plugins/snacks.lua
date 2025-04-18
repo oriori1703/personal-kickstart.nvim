@@ -37,6 +37,7 @@ return {
     opts = {
       picker = {},
       explorer = {},
+      lazygit = {},
       indent = {
         scope = {
           underline = true,
@@ -67,6 +68,7 @@ return {
       { '\\', function() Snacks.explorer() end, desc = 'File Explorer' },
       { '<leader>sp', function() Snacks.picker.projects { dev = { '~/Projects/' } } end, desc = '[S]earch [P]rojects' },
       { '<leader>sM', function() Snacks.picker.man() end, desc = 'Man Pages' },
+      { '<leader>hl', function() Snacks.lazygit() end, desc = '[H]hunk [L]azygit' },
     },
   },
 }
