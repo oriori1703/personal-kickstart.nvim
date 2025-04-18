@@ -55,7 +55,11 @@ return {
       { '<leader>s/', function() Snacks.picker.grep_buffers() end, desc = '[S]earch [/] in Open Files' },
       -- Shortcut for searching your Neovim configuration files
       { '<leader>sn', function() Snacks.picker.files { cwd = vim.fn.stdpath 'config' } end, desc = '[S]earch [N]eovim files' },
+
+      -- Non kickstart telescope pickers:
       { '\\', function() Snacks.explorer() end, desc = 'File Explorer' },
+      { '<leader>sp', function() Snacks.picker.projects { dev = { '~/Projects/' } } end, desc = '[S]earch [P]rojects' },
+      { '<leader>sM', function() Snacks.picker.man() end, desc = 'Man Pages' },
     },
   },
 }
