@@ -32,6 +32,7 @@ require('snacks').setup {
   picker = {},
   explorer = {},
   lazygit = {},
+  image = { doc = { inline = false } },
   indent = {
     scope = {
       underline = true,
