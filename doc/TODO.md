@@ -8,7 +8,7 @@
 - [ ] ~~nvim-tmux-navigation?~~
 - [x] commit lazy-lock.json?
 - [x] code folding?
-- [ ] lazy-git?
+- [x] lazy-git?
 - [x] remap capslock to escape
 - [x] use basedpyright?
 - [x] why rust analyzer works only on save?
@@ -21,5 +21,5 @@
 - [x] spellchecker
 - [ ] `cspell` / `typos` / haper ?
 - [ ] ~~lspkind?~~ (not needed with blink.cmp)
-- [ ] telescope vs fzf-lua vs snacks.picker
+- [x] telescope vs fzf-lua vs snacks.picker
 - [x] smear-cursor.nvim?
