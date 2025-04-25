@@ -27,6 +27,7 @@ return {
         'rust',
         'go',
         'regex',
+        'latex',
       }
       require('nvim-treesitter').install(parsers)
 
