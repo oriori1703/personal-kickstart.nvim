@@ -75,4 +75,6 @@ vim.o.wrap = false
 -- Highlight max chars per line
 -- vim.o.colorcolumn = '120'
 
+vim.o.conceallevel = 0
+
 -- vim: ts=2 sts=2 sw=2 et
