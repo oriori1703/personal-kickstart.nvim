@@ -89,7 +89,7 @@ require('lazy').setup({
     },
   },
   git = {
-    filter = false, -- Disable --filter for git clone to make it easier to copy the plugins for offline use
+    filter = true, -- Disable --filter for git clone to make it easier to copy the plugins for offline use
     url_format = 'https://github.com/%s.git', -- Explicitly use the default URL format to make it easier to change on corporate networks
   },
 })
