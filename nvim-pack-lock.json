@@ -36,6 +36,10 @@
       "rev": "1796c7cedfe7e5dd20096c5d7b8b753d8f8d22eb",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
+    "guess-indent.nvim": {
+      "rev": "84a4987ff36798c2fc1169cbaff67960aed9776f",
+      "src": "https://github.com/NMAC427/guess-indent.nvim"
+    },
     "lazydev.nvim": {
       "rev": "2367a6c0a01eb9edb0464731cc0fb61ed9ab9d2c",
       "src": "https://github.com/folke/lazydev.nvim"
@@ -152,11 +156,6 @@
     "todo-comments.nvim": {
       "rev": "304a8d204ee787d2544d8bc23cd38d2f929e7cc5",
       "src": "https://github.com/folke/todo-comments.nvim"
-    },
-    "vim-sleuth": {
-      "rev": "be69bff86754b1aa5adcbb527d7fcd1635a84080",
-      "src": "https://github.com/tpope/vim-sleuth",
-      "version": "master"
     },
     "which-key.nvim": {
       "rev": "370ec46f710e058c9c1646273e6b225acf47cbed",
