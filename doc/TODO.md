@@ -23,3 +23,5 @@
 - [ ] ~~lspkind?~~ (not needed with blink.cmp)
 - [x] telescope vs fzf-lua vs snacks.picker
 - [x] smear-cursor.nvim?
+- [ ] hardtime.nvim?
+- [ ] multicursor.nvim?
