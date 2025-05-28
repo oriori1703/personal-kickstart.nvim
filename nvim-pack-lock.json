@@ -99,7 +99,7 @@
       "version": "master"
     },
     "nvim-treesitter": {
-      "rev": "42fc28ba918343ebfd5565147a42a26580579482",
+      "rev": "fa0bb30ebdd032f485f44b5caaae1db2b773c0c8",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
