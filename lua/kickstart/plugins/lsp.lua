@@ -102,26 +102,106 @@ vim.api.nvim_create_autocmd('LspAttach', {
     --
     -- This may be unwanted, since they displace some of your code
     if client and client:supports_method('textDocument/inlayHint', event.buf) then
+      vim.lsp.inlay_hint.enable()
       map('<leader>th', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }) end, '[T]oggle Inlay [H]ints')
+
+      -- Inlay hint actions (based on neovim/neovim PR #36219)
+      -- This provides LSP-native text insertion from inlay hints using textEdits.
+      --
+      -- Migration path: When vim.lsp.inlay_hint.action() lands in Neovim core:
+      --   Replace: require('inlay_hint_actions').action -> vim.lsp.inlay_hint.action
+      local inlay_actions = require 'inlay_hint_actions'
+
+      -- Apply text edits from inlay hints at cursor
+      map('<leader>ih', function() inlay_actions.action 'textEdits' end, '[I]nsert inlay [H]int text edits', { 'n', 'v' })
+
+      -- Double-click to apply text edits
+      map('<2-LeftMouse>', function() inlay_actions.action 'textEdits' end, '[I]nsert inlay [H]int text edits')
+
+      -- Additional actions (uncomment to enable):
+      -- Show tooltip with hint info, locations, and commands
+      map('<leader>iH', function() inlay_actions.action 'tooltip' end, '[I]nlay [H]int tooltip')
+
+      -- Jump to type/parameter definition location
+      map('<leader>iL', function() inlay_actions.action 'location' end, '[I]nlay hint [L]ocation')
+
+      -- Show hover info for hint locations
+      map('<leader>iK', function() inlay_actions.action 'hover' end, '[I]nlay hint hover ([K])')
+
+      -- Execute LSP command from hint
+      map('<leader>iC', function() inlay_actions.action 'command' end, '[I]nlay hint [C]ommand')
     end
   end,
 })
+
+vim.pack.add { gh 'b0o/schemastore.nvim' } -- Provides the SchemaStore catalog for use with jsonls and yamlls
 
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 --  See `:help lsp-config` for information about keys and how to configure
 ---@type table<string, vim.lsp.Config>
 local servers = {
+  -- typos and grammar checking
+  -- harper_ls = {},
+  typos_lsp = {},
+  -- codebook = {},
+
+  jdtls = {},
+  kotlin_lsp = {},
   -- clangd = {},
   -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  --
+  basedpyright = {},
+  ruff = {
+    on_attach = function(client) client.server_capabilities.hoverProvider = false end,
+  },
+  rust_analyzer = {
+    ---@module "lspconfig"
+    ---@type lspconfig.settings.rust_analyzer
+    settings = {
+      ['rust-analyzer'] = {
+        check = {
+          command = 'clippy',
+        },
+      },
+    },
+  },
+
   -- Some languages (like typescript) have entire language plugins that can be useful:
   --    https://github.com/pmizio/typescript-tools.nvim
   --
   -- But for many setups, the LSP (`ts_ls`) will work just fine
-  -- ts_ls = {},
+  ts_ls = {},
+  biome = {},
+
+  bashls = {},
+  -- mesonlsp = {},
+
+  taplo = {},
+  jsonls = {
+    ---@type lspconfig.settings.jsonls
+    settings = {
+      json = {
+        schemas = require('schemastore').json.schemas(),
+        validate = { enable = true },
+      },
+    },
+  },
+  yamlls = {
+    ---@type lspconfig.settings.yamlls
+    settings = {
+      yaml = {
+        redhat = { telemetry = { enabled = false } },
+        schemaStore = {
+          -- You must disable built-in schemaStore support if you want to use
+          -- this plugin and its advanced options like `ignore`.
+          enable = false,
+          -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+          url = '',
+        },
+        schemas = require('schemastore').yaml.schemas(),
+      },
+    },
+  },
 
   stylua = {}, -- Used to format Lua code
 
@@ -129,27 +209,6 @@ local servers = {
   lua_ls = {
     on_init = function(client)
       client.server_capabilities.documentFormattingProvider = false -- Disable formatting (formatting is done by stylua)
-
-      if client.workspace_folders then
-        local path = client.workspace_folders[1].name
-        if path ~= vim.fn.stdpath 'config' and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc')) then return end
-      end
-
-      client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-        runtime = {
-          version = 'LuaJIT',
-          path = { 'lua/?.lua', 'lua/?/init.lua' },
-        },
-        workspace = {
-          checkThirdParty = false,
-          -- NOTE: this is a lot slower and will cause issues when working on your own configuration.
-          --  See https://github.com/neovim/nvim-lspconfig/issues/3189
-          library = vim.tbl_extend('force', vim.api.nvim_get_runtime_file('', true), {
-            '${3rd}/luv/library',
-            '${3rd}/busted/library',
-          }),
-        },
-      })
     end,
     ---@type lspconfig.settings.lua_ls
     settings = {
@@ -165,7 +224,23 @@ vim.pack.add {
   gh 'mason-org/mason.nvim',
   gh 'mason-org/mason-lspconfig.nvim',
   gh 'WhoIsSethDaniel/mason-tool-installer.nvim',
+  gh 'folke/lazydev.nvim',
+  gh 'nvim-java/nvim-java',
+  gh 'MunifTanjim/nui.nvim',
+  gh 'mfussenegger/nvim-dap',
+  { src = gh 'JavaHello/spring-boot.nvim', version = '218c0c26c14d99feca778e4d13f5ec3e8b1b60f0' },
 }
+
+-- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
+-- used for completion, annotations and signatures of Neovim apis
+require('lazydev').setup {
+  library = {
+    { path = 'snacks.nvim', words = { 'Snacks' } },
+    { path = 'nvim-lspconfig', words = { 'lspconfig' } },
+  },
+}
+
+require('java').setup()
 
 -- Automatically install LSPs and related tools to stdpath for Neovim
 require('mason').setup {}
@@ -180,6 +255,10 @@ require('mason').setup {}
 local ensure_installed = vim.tbl_keys(servers or {})
 vim.list_extend(ensure_installed, {
   -- You can add other tools here that you want Mason to install
+  'markdownlint',
+  -- bash
+  'shellcheck',
+  'shfmt',
 })
 
 require('mason-tool-installer').setup { ensure_installed = ensure_installed }

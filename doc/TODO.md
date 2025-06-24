@@ -1,0 +1,27 @@
+# Tasks
+
+- [ ] ~~mypy?~~
+- [x] copilot
+- [ ] none-ls vs conform + nvim-lint
+- [x] more lsp like: TS, json, yaml, rust
+- [x] theme for terminal
+- [ ] ~~nvim-tmux-navigation?~~
+- [x] commit lazy-lock.json?
+- [x] code folding?
+- [x] lazy-git?
+- [x] remap capslock to escape
+- [x] use basedpyright?
+- [x] why rust analyzer works only on save?
+- [x] use rustaceanvim instead of rust-analyzer?
+- [x] use rainbow-delimiters.nvim
+- [ ] obsidian.nvim ?
+- [X] blink.cmp instead of instead of nvim-cmp?
+- [ ] ~github/gitlab integration (maybe cmp-git?)~
+- [x] switch to copilot.lua + copilot-cmp?
+- [x] spellchecker
+- [ ] `cspell` / `typos` / haper ?
+- [ ] ~~lspkind?~~ (not needed with blink.cmp)
+- [x] telescope vs fzf-lua vs snacks.picker
+- [x] smear-cursor.nvim?
+- [ ] hardtime.nvim?
+- [ ] multicursor.nvim?

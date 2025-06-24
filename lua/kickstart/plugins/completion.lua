@@ -19,12 +19,16 @@ require('luasnip').setup {}
 -- `friendly-snippets` contains a variety of premade snippets.
 --    See the README about individual language/framework/plugin snippets:
 --    https://github.com/rafamadriz/friendly-snippets
---
--- vim.pack.add { gh 'rafamadriz/friendly-snippets' }
--- require('luasnip.loaders.from_vscode').lazy_load()
+
+vim.pack.add { gh 'rafamadriz/friendly-snippets' }
+require('luasnip.loaders.from_vscode').lazy_load()
 
 -- [[ Autocomplete Engine ]]
-vim.pack.add { { src = gh 'saghen/blink.cmp', version = vim.version.range '1.*' } }
+vim.pack.add {
+  { src = gh 'saghen/blink.cmp', version = vim.version.range '1.*' },
+  gh 'folke/lazydev.nvim',
+  gh 'fang2hou/blink-copilot',
+}
 require('blink.cmp').setup {
   keymap = {
     -- 'default' (recommended) for mappings similar to built-in completions
@@ -63,11 +67,43 @@ require('blink.cmp').setup {
   completion = {
     -- By default, you may press `<c-space>` to show the documentation.
     -- Optionally, set `auto_show = true` to show the documentation after a delay.
-    documentation = { auto_show = false, auto_show_delay_ms = 500 },
+    documentation = { auto_show = true, auto_show_delay_ms = 200 },
   },
 
   sources = {
-    default = { 'lsp', 'path', 'snippets' },
+    default = {
+      'lsp',
+      'path',
+      'snippets',
+      'buffer',
+      'copilot',
+    },
+    per_filetype = {
+      lua = { inherit_defaults = true, 'lazydev' },
+    },
+    providers = {
+      lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+      buffer = {
+        -- Make buffer compeletions appear at the end.
+        score_offset = -100,
+        enabled = function()
+          -- Filetypes for which buffer completions are enabled; add filetypes to extend:
+          local enabled_filetypes = {
+            'markdown',
+            'text',
+          }
+          local filetype = vim.bo.filetype
+          return vim.tbl_contains(enabled_filetypes, filetype)
+        end,
+      },
+      copilot = {
+        name = 'copilot',
+        module = 'blink-copilot',
+        score_offset = 100,
+        async = true,
+        opts = { max_completions = 1 },
+      },
+    },
   },
 
   snippets = { preset = 'luasnip' },
@@ -79,7 +115,7 @@ require('blink.cmp').setup {
   -- the rust implementation via `'prefer_rust_with_warning'`
   --
   -- See `:help blink-cmp-config-fuzzy` for more information
-  fuzzy = { implementation = 'lua' },
+  fuzzy = { implementation = 'prefer_rust_with_warning' },
 
   -- Shows a signature help window while you type arguments for a function
   signature = { enabled = true },

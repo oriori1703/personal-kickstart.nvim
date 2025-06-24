@@ -13,7 +13,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 --  See `:help vim.o`
@@ -84,4 +84,16 @@ vim.o.scrolloff = 10
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
-vim.o.confirm = true
+vim.o.confirm = false
+
+-- Enable smooth scrolling
+vim.opt.smoothscroll = true
+
+-- Highlight max chars per line
+-- vim.o.colorcolumn = '120'
+
+vim.o.conceallevel = 0
+
+vim.o.winborder = 'rounded'
+
+-- vim: ts=2 sts=2 sw=2 et

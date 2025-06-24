@@ -25,13 +25,6 @@ local function gh(repo) return 'https://github.com/' .. repo end
 vim.pack.add { gh 'NMAC427/guess-indent.nvim' }
 require('guess-indent').setup {}
 
--- Because lua is a real programming language, you can also have some logic to your installation -
--- like only installing a plugin if a condition is met.
---
--- Here we only install `nvim-web-devicons` (which adds pretty icons) if we have a Nerd Font,
--- since otherwise the icons won't display properly.
-if vim.g.have_nerd_font then vim.pack.add { gh 'nvim-tree/nvim-web-devicons' } end
-
 -- Here is a more advanced configuration example that passes options to `gitsigns.nvim`
 --
 -- See `:help gitsigns` to understand what each configuration key does.
@@ -68,18 +61,21 @@ require('which-key').setup {
 -- change the command under that to load whatever the name of that colorscheme is.
 --
 -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-vim.pack.add { gh 'folke/tokyonight.nvim' }
+vim.pack.add { { src = gh 'catppuccin/nvim', name = 'catppuccin' } }
 ---@diagnostic disable-next-line: missing-fields
-require('tokyonight').setup {
-  styles = {
-    comments = { italic = false }, -- Disable italics in comments
+require('catppuccin').setup {
+  integrations = {
+    blink_cmp = true,
+    snacks = true,
+    which_key = true,
+    mini = true,
   },
 }
 
 -- Load the colorscheme here.
 -- Like many other themes, this one has different styles, and you could load
--- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-vim.cmd.colorscheme 'tokyonight-night'
+-- any other, such as 'catppuccin-mocha', 'catppuccin-latte', or 'catppuccin-frappe'.
+vim.cmd.colorscheme 'catppuccin-nvim'
 
 -- Highlight todo, notes, etc in comments
 vim.pack.add { gh 'folke/todo-comments.nvim' }
@@ -88,6 +84,13 @@ require('todo-comments').setup { signs = false }
 -- [[ mini.nvim ]]
 --  A collection of various small independent plugins/modules
 vim.pack.add { gh 'nvim-mini/mini.nvim' }
+
+-- If a nerd font is available, load the icons module for pretty icons in various plugins.
+if vim.g.have_nerd_font then
+  require('mini.icons').setup()
+  -- Used for backwards compatibility with plugins that require `nvim-web-devicons` (e.g. telescope.nvim)
+  MiniIcons.mock_nvim_web_devicons()
+end
 
 -- Better Around/Inside textobjects
 --
