@@ -123,6 +123,7 @@ local servers = {
   rust_analyzer = {},
 
   bashls = {},
+  -- mesonlsp = {},
 
   phpactor = {},
 
