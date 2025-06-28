@@ -145,6 +145,7 @@ return {
         bashls = {},
 
         phpactor = {},
+        -- mesonlsp = {},
 
         taplo = {},
         jsonls = {
