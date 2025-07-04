@@ -43,14 +43,12 @@ return {
         local function find_bp()
           local buf_bps = require('dap.breakpoints').get(vim.fn.bufnr())[vim.fn.bufnr()]
           ---@type dap.SourceBreakpoint
-          local bp = { condition = '', logMessage = '', hitCondition = '', line = vim.fn.line '.' }
           for _, candidate in ipairs(buf_bps) do
             if candidate.line and candidate.line == vim.fn.line '.' then
-              bp = candidate
-              break
+              return candidate
             end
           end
-          return bp
+          return { condition = '', logMessage = '', hitCondition = '', line = vim.fn.line '.' }
         end
 
         -- Elicit customization via a UI prompt
@@ -77,16 +75,23 @@ return {
             },
           }
           local menu_options = {}
-          for k, v in pairs(props) do
-            table.insert(menu_options, ('%s: %s'):format(k, v.value))
+          for k, _ in pairs(props) do
+            table.insert(menu_options, k)
           end
           vim.ui.select(menu_options, {
             prompt = 'Edit Breakpoint',
+            format_item = function(item)
+              return ('%s: %s'):format(item, props[item].value)
+            end,
           }, function(choice)
-            local prompt = (tostring(choice)):gsub(':.*', '')
-            props[prompt].setter(vim.fn.input {
-              prompt = ('[%s] '):format(prompt),
-              default = props[prompt].value,
+            if choice == nil then
+              -- User cancelled the selection
+              return
+            end
+
+            props[choice].setter(vim.fn.input {
+              prompt = ('[%s] '):format(choice),
+              default = props[choice].value,
             })
 
             -- Set breakpoint for current line, with customizations (see h:dap.set_breakpoint())
