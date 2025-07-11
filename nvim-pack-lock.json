@@ -98,6 +98,10 @@
       "src": "https://github.com/nvim-neotest/nvim-nio",
       "version": "master"
     },
+    "nvim-origami": {
+      "rev": "9dc6ab34e7835695989772eb2c6ea91541a86c5d",
+      "src": "https://github.com/chrisgrieser/nvim-origami"
+    },
     "nvim-treesitter": {
       "rev": "4eb12d7a1f82b6c8db9929bf2c4b38dc3177dd82",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
@@ -106,11 +110,6 @@
     "nvim-treesitter-context": {
       "rev": "59f318a65d42a5c4037796886a8874fd57f774fc",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-context"
-    },
-    "nvim-ufo": {
-      "rev": "80fe8215ba566df2fbf3bf4d25f59ff8f41bc0e1",
-      "src": "https://github.com/kevinhwang91/nvim-ufo",
-      "version": "main"
     },
     "nvim-web-devicons": {
       "rev": "a1366758b3a232036dc97be8ca41184aa3f50506",
@@ -126,11 +125,6 @@
       "rev": "857c5ac632080dba10aae49dba902ce3abf91b35",
       "src": "https://github.com/nvim-lua/plenary.nvim.git",
       "version": "master"
-    },
-    "promise-async": {
-      "rev": "119e8961014c9bfaf1487bf3c2a393d254f337e2",
-      "src": "https://github.com/kevinhwang91/promise-async",
-      "version": "main"
     },
     "rainbow-delimiters.nvim": {
       "rev": "55ad4fb76ab68460f700599b7449385f0c4e858e",
