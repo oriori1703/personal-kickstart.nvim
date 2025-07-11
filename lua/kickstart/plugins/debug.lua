@@ -22,8 +22,8 @@ vim.keymap.set('n', '<F2>', function() require('dap').step_over() end, { desc = 
 vim.keymap.set('n', '<F3>', function() require('dap').step_out() end, { desc = 'Debug: Step Out' })
 vim.keymap.set('n', '<leader>b', function() require('dap').toggle_breakpoint() end, { desc = 'Debug: Toggle Breakpoint' })
 vim.keymap.set('n', '<leader>B', function()
-  require 'dap.protocol'
   local dap = require 'dap'
+
   -- Search for an existing breakpoint on this line in this buffer
   ---@return dap.SourceBreakpoint bp that was either found, or an empty placeholder
   local function find_bp()
@@ -32,6 +32,7 @@ vim.keymap.set('n', '<leader>B', function()
     for _, candidate in ipairs(buf_bps) do
       if candidate.line and candidate.line == vim.fn.line '.' then return candidate end
     end
+
     return { condition = '', logMessage = '', hitCondition = '', line = vim.fn.line '.' }
   end
 
@@ -64,7 +65,6 @@ vim.keymap.set('n', '<leader>B', function()
         -- User cancelled the selection
         return
       end
-
       props[choice].setter(vim.fn.input {
         prompt = ('[%s] '):format(choice),
         default = props[choice].value,
