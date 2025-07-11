@@ -36,8 +36,8 @@ return {
     {
       '<leader>B',
       function()
-        require 'dap.protocol'
         local dap = require 'dap'
+
         -- Search for an existing breakpoint on this line in this buffer
         ---@return dap.SourceBreakpoint bp that was either found, or an empty placeholder
         local function find_bp()
@@ -46,6 +46,7 @@ return {
           for _, candidate in ipairs(buf_bps) do
             if candidate.line and candidate.line == vim.fn.line '.' then return candidate end
           end
+
           return { condition = '', logMessage = '', hitCondition = '', line = vim.fn.line '.' }
         end
 
@@ -78,7 +79,6 @@ return {
               -- User cancelled the selection
               return
             end
-
             props[choice].setter(vim.fn.input {
               prompt = ('[%s] '):format(choice),
               default = props[choice].value,
