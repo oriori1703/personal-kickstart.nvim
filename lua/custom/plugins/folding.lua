@@ -1,4 +1,6 @@
 -- Makes folding look modern and keep high performance
+--- @module 'lazy'
+--- @type LazySpec
 return {
   'chrisgrieser/nvim-origami',
   event = 'VeryLazy',
