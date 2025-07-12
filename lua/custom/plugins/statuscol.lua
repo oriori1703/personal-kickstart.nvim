@@ -1,4 +1,6 @@
 -- Provide a configurable 'statuscolumn' and click handlers
+--- @module 'lazy'
+--- @type LazySpec
 return {
   'luukvbaal/statuscol.nvim',
   config = function()
