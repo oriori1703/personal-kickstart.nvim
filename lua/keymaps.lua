@@ -33,6 +33,9 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
+-- Close current buffer
+vim.keymap.set('n', '<leader>Q', ':bd<CR>', { desc = 'Close current buffer' })
+
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 -- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
@@ -63,7 +66,39 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-  callback = function() vim.hl.on_yank() end,
+  callback = function() vim.hl.on_yank { timeout = 200 } end,
 })
+
+-- Restore cursor position on file open
+vim.api.nvim_create_autocmd('BufReadPost', {
+  desc = 'Restore cursor position on file open',
+  group = vim.api.nvim_create_augroup('kickstart-restore-cursor', { clear = true }),
+  pattern = '*',
+  callback = function()
+    local line = vim.fn.line '\'"'
+    if line > 1 and line <= vim.fn.line '$' then vim.cmd 'normal! g\'"' end
+  end,
+})
+
+-- auto-create missing dirs when saving a file
+vim.api.nvim_create_autocmd('BufWritePre', {
+  desc = 'Auto-create missing dirs when saving a file',
+  group = vim.api.nvim_create_augroup('kickstart-auto-create-dir', { clear = true }),
+  pattern = '*',
+  callback = function()
+    local dir = vim.fn.expand '<afile>:p:h'
+    if vim.fn.isdirectory(dir) == 0 then vim.fn.mkdir(dir, 'p') end
+  end,
+})
+
+-- disable automatic comment on newline
+-- vim.api.nvim_create_autocmd('FileType', {
+--   desc = 'Disable automatic comment on newline',
+--   group = vim.api.nvim_create_augroup('kickstart-disable-auto-comment', { clear = true }),
+--   pattern = '*',
+--   callback = function()
+--     vim.opt_local.formatoptions:remove { 'c', 'r', 'o' }
+--   end,
+-- })
 
 -- vim: ts=2 sts=2 sw=2 et

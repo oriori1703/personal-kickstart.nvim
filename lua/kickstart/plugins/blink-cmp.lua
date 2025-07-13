@@ -75,7 +75,21 @@ return {
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets' },
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+        providers = {
+          buffer = {
+            score_offset = -1,
+            filter = function(buffer)
+              -- Filetypes for which buffer completions are enabled; add filetypes to extend
+              local enabled_filetypes = {
+                'markdown',
+                'text',
+              }
+              local filetype = vim.bo[buffer].filetype
+              return vim.tbl_contains(enabled_filetypes, filetype)
+            end,
+          },
+        },
       },
 
       snippets = { preset = 'luasnip' },

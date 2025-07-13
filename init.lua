@@ -96,6 +96,15 @@ vim.g.have_nerd_font = false
 -- [[ Setting options ]]
 require 'options'
 
+-- Enable undo/redo changes even after closing and reopening a file
+vim.opt.undofile = true
+
+-- Enable smooth scrolling
+vim.opt.smoothscroll = true
+
+-- Highlight max chars per line
+-- vim.opt.colorcolumn = '100'
+
 -- [[ Basic Keymaps ]]
 require 'keymaps'
 

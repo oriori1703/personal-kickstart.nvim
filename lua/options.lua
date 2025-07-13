@@ -69,4 +69,10 @@ vim.o.scrolloff = 10
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
+-- Enable smooth scrolling
+vim.opt.smoothscroll = true
+
+-- Highlight max chars per line
+-- vim.opt.colorcolumn = '100'
+
 -- vim: ts=2 sts=2 sw=2 et
