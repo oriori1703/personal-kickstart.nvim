@@ -1,6 +1,8 @@
 -- Makes folding look modern and keep high performance
 vim.pack.add { 'https://github.com/chrisgrieser/nvim-origami' }
-require('origami').setup {}
+require('origami').setup {
+  foldKeymaps = { setup = false },
+}
 
 -- recommended: disable vim's auto-folding
 vim.o.foldlevel = 99
