@@ -6,7 +6,9 @@ return {
   event = 'VeryLazy',
   ---@module 'origami'
   ---@type Origami.config
-  opts = {}, -- needed even when using default config
+  opts = {
+    foldKeymaps = { setup = false },
+  },
 
   -- recommended: disable vim's auto-folding
   init = function()
