@@ -87,15 +87,6 @@ P.S. You can delete this when you're done too. It's your config now! :)
 -- [[ Setting options ]]
 require 'options'
 
--- Enable undo/redo changes even after closing and reopening a file
-vim.o.undofile = true
-
--- Disable line wrapping
-vim.o.wrap = false
-
--- Highlight max chars per line
--- vim.o.colorcolumn = '100'
-
 -- [[ Basic Keymaps ]]
 require 'keymaps'
 
