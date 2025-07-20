@@ -73,6 +73,6 @@ vim.o.confirm = true
 vim.opt.smoothscroll = true
 
 -- Highlight max chars per line
--- vim.opt.colorcolumn = '100'
+-- vim.o.colorcolumn = '120'
 
 -- vim: ts=2 sts=2 sw=2 et

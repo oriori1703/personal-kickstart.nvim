@@ -91,14 +91,4 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   end,
 })
 
--- disable automatic comment on newline
--- vim.api.nvim_create_autocmd('FileType', {
---   desc = 'Disable automatic comment on newline',
---   group = vim.api.nvim_create_augroup('kickstart-disable-auto-comment', { clear = true }),
---   pattern = '*',
---   callback = function()
---     vim.opt_local.formatoptions:remove { 'c', 'r', 'o' }
---   end,
--- })
-
 -- vim: ts=2 sts=2 sw=2 et
