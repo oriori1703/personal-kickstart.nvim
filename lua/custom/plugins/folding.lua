@@ -8,6 +8,7 @@ return {
   ---@type Origami.config
   opts = {
     foldKeymaps = { setup = false },
+    autoFold = { enabled = true, kinds = { 'imports' } },
   },
 
   -- recommended: disable vim's auto-folding
