@@ -20,11 +20,11 @@
       "src": "https://github.com/catppuccin/nvim"
     },
     "conform.nvim": {
-      "rev": "f64236f801e4df514cdf22c3c57fe5c3f3bc9ed8",
+      "rev": "a0ab60ed666c56b37fd7ed1847d2ac52f2482ce0",
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "copilot.lua": {
-      "rev": "0753a440b0eed13ff32366ef5e21c215012fd1d8",
+      "rev": "f0c0d981de2737abc50bd7b5bb034ae440826827",
       "src": "https://github.com/zbirenbaum/copilot.lua.git",
       "version": "master"
     },
@@ -65,7 +65,7 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "0069a71538020a77a19f4f8d5e89f066e264a6dc",
+      "rev": "e38547768b2e12bdd48b16b8cfdca2e3b7543e22",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "nvim-autopairs": {
@@ -73,11 +73,11 @@
       "src": "https://github.com/windwp/nvim-autopairs"
     },
     "nvim-dap": {
-      "rev": "f777d1d20ed50c2f312e286892c062d9c2f1c6fe",
+      "rev": "968f89f8aac11b6bdbfc942c71d3436658c1435f",
       "src": "https://github.com/mfussenegger/nvim-dap"
     },
     "nvim-dap-python": {
-      "rev": "261ce649d05bc455a29f9636dc03f8cdaa7e0e2c",
+      "rev": "bd771691da93846b0fc7e095512146a150218bfd",
       "src": "https://github.com/mfussenegger/nvim-dap-python"
     },
     "nvim-dap-ui": {
@@ -86,11 +86,11 @@
       "version": "master"
     },
     "nvim-lint": {
-      "rev": "7ef127aaede2a4d5ad8df8321e2eb4e567f29594",
+      "rev": "ee04d481d4e6089892c2fb2ad8924b1a053591e1",
       "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "ce45ccd6a97be8752ed83d1e14ac2aff1d5a4238",
+      "rev": "aaa807fb2ea8d3caf41c153a174c6b7e472a8428",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -99,11 +99,11 @@
       "version": "master"
     },
     "nvim-origami": {
-      "rev": "5da8ffca21f303e53114ed6e5e1adc0827adf8e9",
+      "rev": "f25b61c7dc350189140d0a57522b38197403db86",
       "src": "https://github.com/chrisgrieser/nvim-origami"
     },
     "nvim-treesitter": {
-      "rev": "6fd7117c1dc4e279f4153af70ae60bd4134b0f01",
+      "rev": "44e90ec66e44f7dbb60030f453a48282b3a1125a",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
@@ -131,7 +131,7 @@
       "src": "https://github.com/HiPhish/rainbow-delimiters.nvim"
     },
     "schemastore.nvim": {
-      "rev": "e906ac3ed0bd273781759e7635b5b824393c925c",
+      "rev": "433a310de5cbab41f1eb3424332a583e21e39f5c",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "smear-cursor.nvim": {
