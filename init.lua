@@ -104,6 +104,35 @@ require 'lazy-bootstrap'
 
 -- [[ Configure and install plugins ]]
 require 'lazy-plugins'
+vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
+  pattern = { '*.sigma.yaml' },
+  callback = function()
+    vim.treesitter.query.set(
+      'yaml',
+      'injections',
+      [[
+        ; inherits: yaml
+        (
+         (block_mapping_pair
+           key: (flow_node) @key
+           value: [
+                   (flow_node [
+                    (plain_scalar
+                     (string_scalar)@injection.content)
+                    (single_quote_scalar)@injection.content
+                    (double_quote_scalar) @injection.content
+                    ])
+                   (block_node
+                     (block_scalar)
+                     @injection.content)
+                  ])
+         (#eq? @key "signature")
+         (#set! injection.language "regex" @injection.content)
+        )
+        ]]
+    )
+  end,
+})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
