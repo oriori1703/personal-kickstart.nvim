@@ -25,12 +25,40 @@ return {
         'go',
         'regex',
         'latex',
+        'yaml',
       }
       require('nvim-treesitter').install(parsers)
 
       vim.api.nvim_create_autocmd('FileType', {
         pattern = parsers,
-        callback = function()
+        callback = function(args)
+          local fname = vim.api.nvim_buf_get_name(args.buf)
+          if fname:match 'sigma%.yaml$' then
+            vim.treesitter.query.set(
+              'yaml',
+              'injections',
+              [[
+              ; inherits: yaml
+              (
+               (block_mapping_pair
+                 key: (flow_node) @key
+                 value: [
+                         (flow_node [
+                          (plain_scalar
+                           (string_scalar)@injection.content)
+                          (single_quote_scalar)@injection.content
+                          (double_quote_scalar) @injection.content
+                          ])
+                         (block_node
+                           (block_scalar)
+                           @injection.content)
+                        ])
+               (#eq? @key "signature")
+               (#set! injection.language "regex" @injection.content)
+              )
+              ]]
+            )
+          end
           -- syntax highlighting, provided by Neovim
           vim.treesitter.start()
 
