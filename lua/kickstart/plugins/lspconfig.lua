@@ -26,7 +26,7 @@ return {
       -- Provides the SchemaStore catalog for use with jsonls and yamlls
       'b0o/schemastore.nvim',
     },
-    config = function()
+    config = vim.schedule_wrap(function()
       -- Brief aside: **What is LSP?**
       --
       -- LSP is an initialism you've probably heard, but might not understand what it is.
@@ -234,7 +234,7 @@ return {
         vim.lsp.config(name, server)
         vim.lsp.enable(name)
       end
-    end,
+    end),
   },
 }
 -- vim: ts=2 sts=2 sw=2 et
