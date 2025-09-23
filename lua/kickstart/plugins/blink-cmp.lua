@@ -29,7 +29,7 @@ return {
         opts = {},
       },
       'folke/lazydev.nvim',
-      'giuxtaposition/blink-cmp-copilot',
+      'fang2hou/blink-copilot',
     },
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
@@ -80,7 +80,14 @@ return {
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'lazydev', 'buffer', 'copilot' },
+        default = {
+          'lsp',
+          'path',
+          'snippets',
+          'lazydev',
+          'buffer',
+          'copilot',
+        },
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
           buffer = {
@@ -98,9 +105,10 @@ return {
           },
           copilot = {
             name = 'copilot',
-            module = 'blink-cmp-copilot',
+            module = 'blink-copilot',
             score_offset = 100,
             async = true,
+            opts = { max_completions = 1 },
           },
           -- On WSL2, blink.cmp may cause the editor to freeze due to a known limitation.
           -- To address this issue, uncomment the following configuration:
