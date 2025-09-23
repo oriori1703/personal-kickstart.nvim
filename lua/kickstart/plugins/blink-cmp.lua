@@ -17,7 +17,7 @@ require('luasnip.loaders.from_vscode').lazy_load()
 -- [[ Autocomplete Engine ]]
 vim.pack.add {
   { src = gh 'saghen/blink.cmp', version = vim.version.range '1.*' },
-  gh 'giuxtaposition/blink-cmp-copilot',
+  gh 'fang2hou/blink-copilot',
 }
 require('blink.cmp').setup {
   keymap = {
@@ -89,9 +89,10 @@ require('blink.cmp').setup {
       },
       copilot = {
         name = 'copilot',
-        module = 'blink-cmp-copilot',
+        module = 'blink-copilot',
         score_offset = 100,
         async = true,
+        opts = { max_completions = 1 },
       },
     },
   },
