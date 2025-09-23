@@ -6,6 +6,7 @@ return {
     event = 'VimEnter',
     version = '1.*',
     dependencies = {
+      'fang2hou/blink-copilot',
       -- Snippet Engine
       {
         'L3MON4D3/LuaSnip',
@@ -28,7 +29,6 @@ return {
         },
         opts = {},
       },
-      'giuxtaposition/blink-cmp-copilot',
     },
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
@@ -79,7 +79,13 @@ return {
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
+        default = {
+          'lsp',
+          'path',
+          'snippets',
+          'buffer',
+          'copilot',
+        },
         providers = {
           buffer = {
             -- Make buffer compeletions appear at the end.
@@ -96,9 +102,10 @@ return {
           },
           copilot = {
             name = 'copilot',
-            module = 'blink-cmp-copilot',
+            module = 'blink-copilot',
             score_offset = 100,
             async = true,
+            opts = { max_completions = 1 },
           },
         },
       },
