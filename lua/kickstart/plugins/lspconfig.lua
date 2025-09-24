@@ -158,9 +158,37 @@ return {
           --
           -- This may be unwanted, since they displace some of your code
           if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+            vim.lsp.inlay_hint.enable()
+
             map('<leader>th', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }) end, '[T]oggle Inlay [H]ints')
 
-            vim.lsp.inlay_hint.enable()
+            -- Action: insert inlay hint text into code at cursor
+            local function insert_inlay_hint()
+              local bufnr = vim.api.nvim_get_current_buf()
+              local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+              row = row - 1 -- zero-indexed
+
+              local ns = vim.api.nvim_get_namespaces()['nvim.lsp.inlayhint']
+              if not ns then
+                return
+              end
+
+              local marks = vim.api.nvim_buf_get_extmarks(bufnr, ns, { row, 0 }, { row, -1 }, { details = true })
+
+              for _, mark in ipairs(marks) do
+                local _, mrow, mcol, details = unpack(mark)
+                if mrow == row and details.virt_text then
+                  if col <= mcol then
+                    local hint = details.virt_text[1][1]
+                    vim.api.nvim_buf_set_text(bufnr, mrow, mcol, mrow, mcol, { hint })
+                    return
+                  end
+                end
+              end
+            end
+
+            vim.keymap.set('n', '<leader>ih', insert_inlay_hint, { desc = '[I]nsert inlay [H]int into buffer' })
+            vim.keymap.set('n', '<2-LeftMouse>', insert_inlay_hint, { desc = '[I]nsert inlay [H]int into buffer' })
           end
         end,
       })
