@@ -22,11 +22,6 @@
       "rev": "c64cc754ace603e185ab30113aaef174187eacf8",
       "src": "https://github.com/stevearc/conform.nvim"
     },
-    "copilot-lsp": {
-      "rev": "a80e0c17e7366614d39506825f49a25d285fead9",
-      "src": "https://github.com/copilotlsp-nvim/copilot-lsp",
-      "version": "main"
-    },
     "copilot.lua": {
       "rev": "3cd5086c28c5769f5db147721f457a3e081de254",
       "src": "https://github.com/zbirenbaum/copilot.lua.git",
@@ -137,6 +132,10 @@
     "schemastore.nvim": {
       "rev": "c8af3f44c68757344b4dcb82e2ac48892b1be765",
       "src": "https://github.com/b0o/schemastore.nvim"
+    },
+    "sidekick.nvim": {
+      "rev": "77432d9e7907563103566ddcaa804683b4f18a1e",
+      "src": "https://github.com/folke/sidekick.nvim"
     },
     "smear-cursor.nvim": {
       "rev": "abfa5835920b1d76c0e24e1465a618ad914be90a",
