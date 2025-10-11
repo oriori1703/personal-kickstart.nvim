@@ -90,6 +90,7 @@ require('lazy').setup({
     filter = true, -- Disable --filter for git clone to make it easier to copy the plugins for offline use
     url_format = 'https://github.com/%s.git', -- Explicitly use the default URL format to make it easier to change on corporate networks
   },
+  rocks = { enabled = false },
 })
 
 -- vim: ts=2 sts=2 sw=2 et
