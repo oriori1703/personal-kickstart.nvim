@@ -5,20 +5,16 @@ return {
   version = '*',
   lazy = true,
   -- ft = 'markdown',
-  -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
   event = {
     'BufReadPre ' .. vim.fn.expand '~/Documents/vaults/*.md',
     'BufNewFile ' .. vim.fn.expand '~/Documents/vaults/*.md',
   },
   dependencies = {
-    -- Required.
-    'nvim-lua/plenary.nvim',
-    -- Optional
+    'saghen/blink.cmp',
     'folke/snacks.nvim',
   },
   ---@module 'obsidian'
-  ---@type obsidian.config.ClientOpts
-  ---@diagnostic disable-next-line: missing-fields
+  ---@type obsidian.config
   opts = {
     workspaces = {
       {
@@ -30,10 +26,10 @@ return {
       --   path = '~/Documents/vaults/work',
       -- },
     },
-    picker = { ---@diagnostic disable-line: missing-fields
+    picker = {
       name = 'snacks.pick',
     },
-    completion = { ---@diagnostic disable-line: missing-fields
+    completion = {
       blink = true,
     },
     ui = { enable = false },
