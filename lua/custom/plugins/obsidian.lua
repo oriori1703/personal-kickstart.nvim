@@ -1,7 +1,5 @@
 vim.pack.add {
   { src = 'https://github.com/obsidian-nvim/obsidian.nvim', version = vim.version.range '*' },
-  'https://github.com/nvim-lua/plenary.nvim',
-  'https://github.com/folke/snacks.nvim',
 }
 
 require('obsidian').setup {
@@ -15,10 +13,10 @@ require('obsidian').setup {
     --   path = '~/Documents/vaults/work',
     -- },
   },
-  picker = { ---@diagnostic disable-line: missing-fields
+  picker = {
     name = 'snacks.pick',
   },
-  completion = { ---@diagnostic disable-line: missing-fields
+  completion = {
     blink = true,
   },
   ---@diagnostic disable-next-line: missing-fields
