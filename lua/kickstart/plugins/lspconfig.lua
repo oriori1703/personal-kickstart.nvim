@@ -120,7 +120,15 @@ local servers = {
   --    https://github.com/mrcjkb/rustaceanvim
   --
   -- But for many setups, the LSP (`rust_analyzer`) will work just fine
-  rust_analyzer = {},
+  rust_analyzer = {
+    settings = {
+      ['rust-analyzer'] = {
+        check = {
+          command = 'clippy',
+        },
+      },
+    },
+  },
 
   bashls = {},
   -- mesonlsp = {},
