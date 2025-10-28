@@ -133,7 +133,15 @@ return {
         ruff = {
           on_attach = function(client) client.server_capabilities.hoverProvider = false end,
         },
-        rust_analyzer = {},
+        rust_analyzer = {
+          settings = {
+            ['rust-analyzer'] = {
+              check = {
+                command = 'clippy',
+              },
+            },
+          },
+        },
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
