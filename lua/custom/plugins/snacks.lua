@@ -30,7 +30,6 @@ vim.pack.add { gh 'folke/snacks.nvim' }
 
 require('snacks').setup {
   picker = {},
-  explorer = {},
   lazygit = {},
   image = { doc = { inline = false } },
   indent = {
@@ -57,7 +56,6 @@ vim.keymap.set('n', '<leader>/', function() Snacks.picker.lines {} end, { desc =
 vim.keymap.set('n', '<leader>s/', function() Snacks.picker.grep_buffers {} end, { desc = '[S]earch [/] in Open Files' })
 
 -- Non kickstart picker additions:
-vim.keymap.set('n', '\\', function() Snacks.explorer() end, { desc = 'File Explorer' })
 vim.keymap.set('n', '<leader>sp', function() Snacks.picker.projects { dev = { '~/Projects/' } } end, { desc = '[S]earch [P]rojects' })
 vim.keymap.set('n', '<leader>sM', function() Snacks.picker.man() end, { desc = '[S]earch [M]an pages' })
 vim.keymap.set('n', '<leader>hl', function() Snacks.lazygit() end, { desc = '[H]hunk [L]azygit' })
