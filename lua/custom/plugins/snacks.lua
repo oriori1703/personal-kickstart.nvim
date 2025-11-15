@@ -42,7 +42,6 @@ return {
     ---@type snacks.Config
     opts = {
       picker = {},
-      explorer = {},
       lazygit = {},
       image = { doc = { inline = false } },
       indent = {
@@ -72,7 +71,6 @@ return {
       { '<leader>sn', function() Snacks.picker.files { cwd = vim.fn.stdpath 'config' } end, desc = '[S]earch [N]eovim files' },
 
       -- Non kickstart telescope pickers:
-      { '\\', function() Snacks.explorer() end, desc = 'File Explorer' },
       { '<leader>sp', function() Snacks.picker.projects { dev = { '~/Projects/' } } end, desc = '[S]earch [P]rojects' },
       { '<leader>sM', function() Snacks.picker.man() end, desc = 'Man Pages' },
       { '<leader>hl', function() Snacks.lazygit() end, desc = '[H]hunk [L]azygit' },
