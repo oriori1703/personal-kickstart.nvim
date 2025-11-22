@@ -34,7 +34,6 @@ return {
       },
       -- You can also specify external formatters in here.
       formatters_by_ft = {
-        php = { 'php_cs_fixer' },
         markdown = { 'markdownlint', 'injected' },
         -- rust = { 'rustfmt' },
         -- Conform can also run multiple formatters sequentially

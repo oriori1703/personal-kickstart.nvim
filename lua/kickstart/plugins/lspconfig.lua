@@ -177,8 +177,6 @@ return {
         biome = {},
 
         bashls = {},
-
-        phpactor = {},
         -- mesonlsp = {},
 
         taplo = {},
@@ -257,9 +255,6 @@ return {
         -- bash
         'shellcheck',
         'shfmt',
-        -- php
-        'phpcs',
-        'php-cs-fixer',
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
