@@ -158,8 +158,6 @@ local servers = {
   bashls = {},
   -- mesonlsp = {},
 
-  phpactor = {},
-
   taplo = {},
   jsonls = {
     settings = {
@@ -249,9 +247,6 @@ vim.list_extend(ensure_installed, {
   -- bash
   'shellcheck',
   'shfmt',
-  -- php
-  'phpcs',
-  'php-cs-fixer',
 })
 
 require('mason-tool-installer').setup { ensure_installed = ensure_installed }
