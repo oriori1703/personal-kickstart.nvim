@@ -3,11 +3,7 @@
 return {
   'A7Lavinraj/fyler.nvim',
   dependencies = {
-    {
-      'mini.nvim',
-      enabled = vim.g.have_nerd_font,
-      config = function() require('mini.icons').setup {} end,
-    },
+    { 'mini.nvim', enabled = vim.g.have_nerd_font },
     'folke/snacks.nvim',
   },
   --- @type FylerSetup
