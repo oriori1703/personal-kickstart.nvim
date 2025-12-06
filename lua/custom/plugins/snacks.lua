@@ -16,11 +16,7 @@ return {
     lazy = false,
     dependencies = {
       -- Useful for getting pretty icons, but requires a Nerd Font.
-      {
-        'mini.nvim',
-        enabled = vim.g.have_nerd_font,
-        config = function() require('mini.icons').setup {} end,
-      },
+      { 'mini.nvim', enabled = vim.g.have_nerd_font },
     },
 
     -- snacks.nvim is a plugin that contains a collection of QoL improvements.
