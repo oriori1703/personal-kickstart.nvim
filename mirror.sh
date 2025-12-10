@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
-mirror_mason_registry(){
+mirror_mason_registry() {
 	target_dir="$mirror_dir/mason-registry"
 	git clone --mirror https://github.com/mason-org/mason-registry.git $target_dir || return
 	cd "$target_dir" || return
 	git config --bool core.bare false
 }
 
-mirror_nvim_plugin(){
+mirror_nvim_plugin() {
 	echo "Processing: $full_name"
 
 	cd "$full_name" || return
@@ -29,7 +29,7 @@ mirror_nvim_plugins() {
 	mkdir -p "$mirror_dir"
 
 	find "$plugin_dir" -mindepth 1 -maxdepth 1 | while read -r full_name; do
-		mirror_nvim_plugin $full_name
+		mirror_nvim_plugin "$full_name"
 	done
 
 	mirror_mason_registry
