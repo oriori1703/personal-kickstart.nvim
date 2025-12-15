@@ -119,31 +119,31 @@ return {
 
             map('<leader>th', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }) end, '[T]oggle Inlay [H]ints')
 
-            -- Action: insert inlay hint text into code at cursor
-            local function insert_inlay_hint()
-              local bufnr = vim.api.nvim_get_current_buf()
-              local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-              row = row - 1 -- zero-indexed
+            -- Inlay hint actions (based on neovim/neovim PR #36219)
+            -- This provides LSP-native text insertion from inlay hints using textEdits.
+            --
+            -- Migration path: When vim.lsp.inlay_hint.action() lands in Neovim core:
+            --   Replace: require('inlay_hint_actions').action -> vim.lsp.inlay_hint.action
+            local inlay_actions = require 'inlay_hint_actions'
 
-              local ns = vim.api.nvim_get_namespaces()['nvim.lsp.inlayhint']
-              if not ns then return end
+            -- Apply text edits from inlay hints at cursor
+            map('<leader>ih', function() inlay_actions.action 'textEdits' end, '[I]nsert inlay [H]int text edits', { 'n', 'v' })
 
-              local marks = vim.api.nvim_buf_get_extmarks(bufnr, ns, { row, 0 }, { row, -1 }, { details = true })
+            -- Double-click to apply text edits
+            map('<2-LeftMouse>', function() inlay_actions.action 'textEdits' end, '[I]nsert inlay [H]int text edits')
 
-              for _, mark in ipairs(marks) do
-                local _, mrow, mcol, details = unpack(mark)
-                if mrow == row and details.virt_text then
-                  if col <= mcol then
-                    local hint = details.virt_text[1][1]
-                    vim.api.nvim_buf_set_text(bufnr, mrow, mcol, mrow, mcol, { hint })
-                    return
-                  end
-                end
-              end
-            end
+            -- Additional actions (uncomment to enable):
+            -- Show tooltip with hint info, locations, and commands
+            map('<leader>iH', function() inlay_actions.action 'tooltip' end, '[I]nlay [H]int tooltip')
 
-            vim.keymap.set('n', '<leader>ih', insert_inlay_hint, { desc = '[I]nsert inlay [H]int into buffer' })
-            vim.keymap.set('n', '<2-LeftMouse>', insert_inlay_hint, { desc = '[I]nsert inlay [H]int into buffer' })
+            -- Jump to type/parameter definition location
+            map('<leader>iL', function() inlay_actions.action 'location' end, '[I]nlay hint [L]ocation')
+
+            -- Show hover info for hint locations
+            map('<leader>iK', function() inlay_actions.action 'hover' end, '[I]nlay hint hover ([K])')
+
+            -- Execute LSP command from hint
+            map('<leader>iC', function() inlay_actions.action 'command' end, '[I]nlay hint [C]ommand')
           end
         end,
       })
