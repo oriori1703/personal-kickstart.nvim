@@ -17,6 +17,7 @@ require('luasnip.loaders.from_vscode').lazy_load()
 -- [[ Autocomplete Engine ]]
 vim.pack.add {
   { src = gh 'saghen/blink.cmp', version = vim.version.range '1.*' },
+  gh 'folke/lazydev.nvim',
   gh 'fang2hou/blink-copilot',
 }
 require('blink.cmp').setup {
@@ -73,7 +74,11 @@ require('blink.cmp').setup {
       'buffer',
       'copilot',
     },
+    per_filetype = {
+      lua = { inherit_defaults = true, 'lazydev' },
+    },
     providers = {
+      lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
       buffer = {
         -- Make buffer compeletions appear at the end.
         score_offset = -100,
