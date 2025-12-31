@@ -6,6 +6,7 @@ return {
     event = 'VimEnter',
     version = '1.*',
     dependencies = {
+      'folke/lazydev.nvim',
       'fang2hou/blink-copilot',
       -- Snippet Engine
       {
@@ -86,7 +87,11 @@ return {
           'buffer',
           'copilot',
         },
+        per_filetype = {
+          lua = { inherit_defaults = true, 'lazydev' },
+        },
         providers = {
+          lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
           buffer = {
             -- Make buffer compeletions appear at the end.
             score_offset = -100,
