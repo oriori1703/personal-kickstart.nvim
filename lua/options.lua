@@ -7,7 +7,7 @@
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.o.relativenumber = true
+vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -73,6 +73,29 @@ vim.o.confirm = true
 vim.o.wrap = false
 
 -- Highlight max chars per line
--- vim.o.colorcolumn = '120'
+vim.o.colorcolumn = '88'
 
+-- same font as alacritty
+vim.o.guifont = 'FiraCode Nerd Font:h11'
+
+-- resize with ctrl + [0, -, +]
+-- works in neovide and alacritty
+vim.g.neovide_scale_factor = 1.0
+local step = 1.05
+local change_scale_factor = function(delta) vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta end
+vim.keymap.set('n', '<C-=>', function() change_scale_factor(step) end)
+vim.keymap.set('n', '<C-->', function() change_scale_factor(1 / step) end)
+vim.keymap.set('n', '<C-0>', function() vim.g.neovide_scale_factor = 1.0 end)
+
+-- Ctrl-Shift-v to paste
+if vim.g.neovide then
+  -- vim.keymap.set('n', '<D-s>', ':w<CR>') -- Save
+  -- vim.keymap.set('v', '<D-c>', '"+y') -- Copy
+  vim.keymap.set('n', '<sc-v>', '"+P') -- Paste normal mode
+  vim.keymap.set('v', '<sc-v>', '"+P') -- Paste visual mode
+  vim.keymap.set('c', '<sc-v>', '<C-R>+') -- Paste command mode
+  -- vim.keymap.set('i', '<sc-v>', '<ESC>l"+Pli') -- Paste insert mode
+  vim.keymap.set('i', '<sc-v>', '<ESC>"+p') -- Paste insert mode
+  vim.keymap.set('t', '<sc-v>', '<C-\\><C-n>"+Pi', { noremap = true }) -- Paste terminal mode
+end
 -- vim: ts=2 sts=2 sw=2 et

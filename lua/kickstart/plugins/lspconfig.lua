@@ -187,7 +187,7 @@ return {
       --  So, we create new capabilities with blink.cmp, and then broadcast that to the servers.
       -- NOTE: The following line is now commented as blink.cmp extends capabilites by default from its internal code:
       -- https://github.com/Saghen/blink.cmp/blob/102db2f5996a46818661845cf283484870b60450/plugin/blink-cmp.lua
-      -- It has been left here as a comment for educational purposes (as the predecessor completion plugin required this explicit step).
+      -- It has been left here as a comment for educational purposes (as the predecessor completion plugin required this explicit step].
       --
       -- local capabilities = require("blink.cmp").get_lsp_capabilities()
 
@@ -216,8 +216,8 @@ return {
         mason = {
           -- clangd = {},
           -- gopls = {},
-          -- pyright = {},
-          -- rust_analyzer = {},
+          pyright = {},
+          rust_analyzer = {},
           -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
           --
           -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -237,6 +237,7 @@ return {
                 },
                 -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
                 -- diagnostics = { disable = { 'missing-fields' } },
+                diagnostics = { disable = { 'missing-fields' }, globals = { 'vim' } },
               },
             },
           },
