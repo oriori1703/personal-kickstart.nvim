@@ -340,7 +340,7 @@ local inlayhint_actions = {
     local hint = assert(hints[1])
     local hint_labels = action_helpers.get_hint_labels(hint, { 'location', 'command' })
 
-    -- the level 1 heading is the full hint object
+    -- The level 1 heading is the full hint object
     local lines = { string.format('# `%s`', action_helpers.get_label_text(hint, false)), '' }
 
     if hint.tooltip then util.convert_input_to_markdown_lines(hint.tooltip, lines) end
@@ -377,7 +377,7 @@ local inlayhint_actions = {
     end
 
     if #lines == 2 then
-      -- no tooltip/command/location has been found. Skip this hint.
+      -- No tooltip/command/location has been found. Skip this hint.
       return 0
     end
 
@@ -524,7 +524,7 @@ function M.action(action, opts, callback)
   local on_finish_cb_called = false
   if callback then
     local original_callback = callback
-    -- decorate the `on_finish` callback to make sure it only called once.
+    -- Decorate the `on_finish` callback to make sure it only called once.
     ---@type inlay_hint_actions.on_finish.callback
     callback = function(...)
       assert(not on_finish_cb_called, 'The callback should only be called once.')
