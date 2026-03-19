@@ -36,6 +36,7 @@ return {
             -- Load luvit types when the `vim.uv` word is found
             { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
             { path = 'snacks.nvim', words = { 'Snacks' } },
+            { path = 'nvim-lspconfig', words = { 'lspconfig' } },
           },
         },
       },
@@ -177,6 +178,8 @@ return {
           on_attach = function(client) client.server_capabilities.hoverProvider = false end,
         },
         rust_analyzer = {
+          ---@module "lspconfig"
+          ---@type lspconfig.settings.rust_analyzer
           settings = {
             ['rust-analyzer'] = {
               check = {
@@ -198,6 +201,7 @@ return {
 
         taplo = {},
         jsonls = {
+          ---@type lspconfig.settings.jsonls
           settings = {
             json = {
               schemas = require('schemastore').json.schemas(),
@@ -206,6 +210,7 @@ return {
           },
         },
         yamlls = {
+          ---@type lspconfig.settings.yamlls
           settings = {
             yaml = {
               redhat = { telemetry = { enabled = false } },
@@ -228,7 +233,6 @@ return {
           on_init = function(client)
             client.server_capabilities.documentFormattingProvider = false -- Disable formatting (formatting is done by stylua)
           end,
-          ---@module "lspconfig"
           ---@type lspconfig.settings.lua_ls
           settings = {
             Lua = {
