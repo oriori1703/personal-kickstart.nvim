@@ -146,6 +146,8 @@ local servers = {
   --
   -- But for many setups, the LSP (`rust_analyzer`) will work just fine
   rust_analyzer = {
+    ---@module "lspconfig"
+    ---@type lspconfig.settings.rust_analyzer
     settings = {
       ['rust-analyzer'] = {
         check = {
@@ -160,6 +162,7 @@ local servers = {
 
   taplo = {},
   jsonls = {
+    ---@type lspconfig.settings.jsonls
     settings = {
       json = {
         schemas = require('schemastore').json.schemas(),
@@ -168,6 +171,7 @@ local servers = {
     },
   },
   yamlls = {
+    ---@type lspconfig.settings.yamlls
     settings = {
       yaml = {
         redhat = { telemetry = { enabled = false } },
@@ -190,7 +194,6 @@ local servers = {
     on_init = function(client)
       client.server_capabilities.documentFormattingProvider = false -- Disable formatting (formatting is done by stylua)
     end,
-    ---@module "lspconfig"
     ---@type lspconfig.settings.lua_ls
     settings = {
       Lua = {
@@ -215,6 +218,7 @@ require('lazydev').setup {
     -- Load luvit types when the `vim.uv` word is found
     { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
     { path = 'snacks.nvim', words = { 'Snacks' } },
+    { path = 'nvim-lspconfig', words = { 'lspconfig' } },
   },
 }
 
