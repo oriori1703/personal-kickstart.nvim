@@ -6,7 +6,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local out = vim.fn.system {
     'git',
     'clone',
-    -- '--filter=blob:none', Disable --filter for git clone to make it easier to copy the plugins for offline use
+    '--filter=blob:none', -- Disable --filter for git clone to make it easier to copy the plugins for offline use
     '--branch=stable',
     lazyrepo,
     lazypath,
