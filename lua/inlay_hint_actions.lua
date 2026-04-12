@@ -91,49 +91,42 @@ local action_helpers = {
   end,
 
   --- Build the range from normal or visual mode based on cursor position.
-  --- Returns LSP-compatible range format.
-  --- Rewritten for Neovim 0.11 compatibility (no vim.pos/vim.range APIs).
-  ---@return lsp.Range
+  --- @return vim.Range
   make_range = function()
+    local bufnr = api.nvim_get_current_buf()
+    local winid = fn.bufwinid(bufnr)
     local mode = fn.mode()
 
+    -- Mark position, (1, 0) indexed, end-exclusive
+    --- @type {start: vim.Pos, end: vim.Pos}
+    local range = {}
+
     if mode == 'n' then
-      -- Normal mode: single cursor position
-      local cursor = api.nvim_win_get_cursor(0)
-      local row = cursor[1] - 1 -- 0-indexed
-      local col = cursor[2]
-      return {
-        start = { line = row, character = col },
-        ['end'] = { line = row, character = col + 1 },
-      }
+      local cursor = api.nvim_win_get_cursor(winid)
+      range.start = vim.pos.cursor(cursor)
+      range['end'] = vim.pos.cursor(cursor)
+      range['end'].col = range['end'].col + 1
     else
-      -- Visual mode: selected range
       local start_pos = fn.getpos 'v'
       local end_pos = fn.getpos '.'
-
-      -- Ensure start is before end
       if start_pos[2] > end_pos[2] or (start_pos[2] == end_pos[2] and start_pos[3] > end_pos[3]) then
         --- @type [integer, integer, integer, integer]
         start_pos, end_pos = end_pos, start_pos
       end
-
-      local start_row = start_pos[2] - 1 -- 0-indexed
-      local start_col = start_pos[3] - 1
-      local end_row = end_pos[2] - 1
-      local end_col = end_pos[3]
-
-      -- Visual line mode: entire lines
-      if mode == 'V' or mode == 'Vs' then
-        start_col = 0
-        end_row = end_row + 1
-        end_col = 0
-      end
-
-      return {
-        start = { line = start_row, character = start_col },
-        ['end'] = { line = end_row, character = end_col },
+      range = {
+        start = vim.pos.cursor { start_pos[2], start_pos[3] - 1 },
+        ['end'] = vim.pos.cursor { end_pos[2], end_pos[3] },
       }
+
+      if mode == 'V' or mode == 'Vs' then
+        range.start.col = 0
+        range['end'].row = range['end'].row + 1
+        range['end'].col = 0
+      end
     end
+    range.start.buf = bufnr
+    range['end'].buf = bufnr
+    return vim.range(range.start, range['end'])
   end,
 
   --- Append `new_label` to `labels` if there are no duplicates.
@@ -537,7 +530,13 @@ function M.action(action, opts, callback)
   if hints == nil then
     local range = action_helpers.make_range()
     hints = vim.lsp.inlay_hint.get {
-      range = range,
+      range = {
+        -- In `M.on_inlayhint`,
+        -- the inlay hints are stored by byte indices, not lsp positions (utf-*),
+        -- so we can't use `vim.range.to_lsp`
+        start = { line = range.start_row, character = range.start_col },
+        ['end'] = { line = range.end_row, character = range.end_col },
+      },
       bufnr = bufnr,
     }
   end
