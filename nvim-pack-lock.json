@@ -51,6 +51,10 @@
       "rev": "ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d",
       "src": "https://github.com/folke/lazydev.nvim"
     },
+    "lua-json5": {
+      "rev": "713407f19e6155579a6594d56e6cfe616fddb39c",
+      "src": "https://github.com/Joakker/lua-json5"
+    },
     "mason-lspconfig.nvim": {
       "rev": "037398b9ce4a53ba48d5f94765c641a1fd16d906",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
@@ -83,10 +87,9 @@
       "rev": "1808458eba2b18f178f990e01376941a42c7f93b",
       "src": "https://github.com/mfussenegger/nvim-dap-python"
     },
-    "nvim-dap-ui": {
-      "rev": "f5b6673f374626515401c5bc51b005f784a4f252",
-      "src": "https://github.com/rcarriga/nvim-dap-ui",
-      "version": "master"
+    "nvim-dap-view": {
+      "rev": "dd43736f30ed70571a02e8c560ab69746ad7a1ed",
+      "src": "https://github.com/igorlfs/nvim-dap-view"
     },
     "nvim-lint": {
       "rev": "4b03656c09c1561f89b6aa0665c15d292ba9499d",
@@ -95,11 +98,6 @@
     "nvim-lspconfig": {
       "rev": "16812abf0e8d8175155f26143a8504e8253e92b0",
       "src": "https://github.com/neovim/nvim-lspconfig"
-    },
-    "nvim-nio": {
-      "rev": "21f5324bfac14e22ba26553caf69ec76ae8a7662",
-      "src": "https://github.com/nvim-neotest/nvim-nio",
-      "version": "master"
     },
     "nvim-origami": {
       "rev": "e5b527f41d18c2ee5af868e1a3939b60f15fdb90",

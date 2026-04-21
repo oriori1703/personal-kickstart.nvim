@@ -50,6 +50,11 @@ vim.api.nvim_create_autocmd('PackChanged', {
       vim.cmd 'TSUpdate'
       return
     end
+
+    if name == 'lua-json5' and vim.fn.executable 'cargo' == 1 then
+      run_build(name, { './install.sh' }, ev.data.path)
+      return
+    end
   end,
 })
 
