@@ -103,8 +103,8 @@ local action_helpers = {
 
     if mode == 'n' then
       local cursor = api.nvim_win_get_cursor(winid)
-      range.start = vim.pos.cursor(cursor)
-      range['end'] = vim.pos.cursor(cursor)
+      range.start = vim.pos.cursor(bufnr, cursor)
+      range['end'] = vim.pos.cursor(bufnr, cursor)
       range['end'].col = range['end'].col + 1
     else
       local start_pos = fn.getpos 'v'
@@ -114,8 +114,8 @@ local action_helpers = {
         start_pos, end_pos = end_pos, start_pos
       end
       range = {
-        start = vim.pos.cursor { start_pos[2], start_pos[3] - 1 },
-        ['end'] = vim.pos.cursor { end_pos[2], end_pos[3] },
+        start = vim.pos.cursor(bufnr, { start_pos[2], start_pos[3] - 1 }),
+        ['end'] = vim.pos.cursor(bufnr, { end_pos[2], end_pos[3] }),
       }
 
       if mode == 'V' or mode == 'Vs' then
