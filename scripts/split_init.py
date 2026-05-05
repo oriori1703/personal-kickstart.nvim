@@ -6,7 +6,8 @@ This script is intentionally repo-specific. It understands the current section
 markers in the single-file init.lua and emits the modular tree into a separate
 output root:
 
-* init.lua loader plus the examples block
+* init.lua loader
+* lua/kickstart/plugins/init.lua with the examples block
 * one Lua file per core section
 
 Use --write to update files and --check to verify them.
@@ -185,7 +186,7 @@ def build_plugin_loader() -> list[str]:
     return lines
 
 
-def build_root_init(prelude: list[str], examples_lines: list[str], postlude: list[str]) -> list[str]:
+def build_root_init(prelude: list[str], postlude: list[str]) -> list[str]:
     root = list(prelude)
     if root and root[-1] != "":
         root.append("")
@@ -203,11 +204,8 @@ def build_root_init(prelude: list[str], examples_lines: list[str], postlude: lis
             "",
             "-- [[ Configure and install plugins ]]",
             "require 'kickstart.plugins'",
-            "",
         ]
     )
-
-    root.extend(examples_lines)
     root.extend(postlude)
     return root
 
@@ -247,14 +245,13 @@ def build_outputs(source_lines: list[str]) -> dict[Path, list[str]]:
     section_9_lines = source_lines[section_start_index(source_lines, section_9_idx) : section_end_index(source_lines, None) + 1]
 
     options_lines, keymaps_lines = split_section_1(section_1_lines)
-    examples_lines = section_9_lines
 
     outputs: dict[Path, list[str]] = {
-        Path("init.lua"): build_root_init(prelude, examples_lines, source_lines[section_end_index(source_lines, None) + 1 :]),
+        Path("init.lua"): build_root_init(prelude, source_lines[section_end_index(source_lines, None) + 1 :]),
         Path("lua/options.lua"): options_lines,
         Path("lua/keymaps.lua"): keymaps_lines,
         Path("lua/pack.lua"): build_section_module(section_2_lines, False),
-        Path("lua/kickstart/plugins/init.lua"): build_plugin_loader(),
+        Path("lua/kickstart/plugins/init.lua"): [*build_plugin_loader(), "", *build_section_module(section_9_lines, False)],
         Path("lua/kickstart/plugins/ui.lua"): build_section_module(section_3_lines, True),
         Path("lua/kickstart/plugins/search.lua"): build_section_module(section_4_lines, True),
         Path("lua/kickstart/plugins/lsp.lua"): build_section_module(section_5_lines, True),
