@@ -20,7 +20,7 @@ import re
 import sys
 from dataclasses import dataclass
 from pathlib import Path
-from typing import cast
+from typing import NoReturn, cast
 
 
 @dataclass(frozen=True)
@@ -39,25 +39,11 @@ class CliArgs:
     check: bool
 
 
-FILE_SECTION_SPECS = [
-    SectionSpec(1, "section_01_foundation.lua", "kickstart.sections.section_01_foundation"),
-    SectionSpec(2, "section_02_plugin_manager.lua", "kickstart.sections.section_02_plugin_manager"),
-    SectionSpec(3, "section_03_ui.lua", "kickstart.sections.section_03_ui", uses_gh=True),
-    SectionSpec(4, "section_04_search.lua", "kickstart.sections.section_04_search", uses_gh=True),
-    SectionSpec(5, "section_05_lsp.lua", "kickstart.sections.section_05_lsp", uses_gh=True),
-    SectionSpec(6, "section_06_formatting.lua", "kickstart.sections.section_06_formatting", uses_gh=True),
-    SectionSpec(7, "section_07_completion.lua", "kickstart.sections.section_07_completion", uses_gh=True),
-    SectionSpec(8, "section_08_treesitter.lua", "kickstart.sections.section_08_treesitter", uses_gh=True),
-]
-
-INLINE_SECTION_SPECS = [
-    SectionSpec(9, "section_09_examples.lua", "kickstart.sections.section_09_examples"),
-]
-
-ALL_SECTION_SPECS = [*FILE_SECTION_SPECS, *INLINE_SECTION_SPECS]
-
 SECTION_HEADER_RE = re.compile(r"^-- SECTION (?P<number>\d+): (?P<title>.+)$")
 SEPARATOR_LINE = "-- ============================================================"
+SECTION1_OPTIONS_MARKER = "-- [[ Setting options ]]"
+SECTION1_KEYMAPS_MARKER = "-- [[ Basic Keymaps ]]"
+SECTION1_AUTOCMDS_MARKER = "-- [[ Basic Autocommands ]]"
 GH_HELPER = [
     "---Because most plugins are hosted on GitHub, you can use the helper",
     "---function to have less repetition in the following sections.",
@@ -67,16 +53,36 @@ GH_HELPER = [
 ]
 
 
-def fail(message: str) -> None:
+@dataclass(frozen=True)
+class ModuleSpec:
+    number: int
+    path: Path
+    module: str
+    uses_gh: bool = False
+
+
+FILE_SPECS = [
+    ModuleSpec(2, Path("lua/pack.lua"), "pack"),
+    ModuleSpec(3, Path("lua/kickstart/plugins/ui.lua"), "kickstart.plugins.ui", uses_gh=True),
+    ModuleSpec(4, Path("lua/kickstart/plugins/search.lua"), "kickstart.plugins.search", uses_gh=True),
+    ModuleSpec(5, Path("lua/kickstart/plugins/lsp.lua"), "kickstart.plugins.lsp", uses_gh=True),
+    ModuleSpec(6, Path("lua/kickstart/plugins/formatting.lua"), "kickstart.plugins.formatting", uses_gh=True),
+    ModuleSpec(7, Path("lua/kickstart/plugins/completion.lua"), "kickstart.plugins.completion", uses_gh=True),
+    ModuleSpec(8, Path("lua/kickstart/plugins/treesitter.lua"), "kickstart.plugins.treesitter", uses_gh=True),
+]
+
+ALL_SECTION_NUMBERS = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+def fail(message: str) -> NoReturn:
     raise SystemExit(message)
 
 
 def read_lines(path: Path) -> list[str]:
     try:
         return path.read_text(encoding="utf-8").splitlines()
-    except FileNotFoundError as exc:
+    except FileNotFoundError:
         fail(f"missing source file: {path}")
-        raise exc
 
 
 def render(lines: list[str]) -> str:
@@ -98,6 +104,13 @@ def find_section_headers(lines: list[str]) -> dict[int, int]:
     return headers
 
 
+def find_line_index(lines: list[str], target: str) -> int:
+    for idx, line in enumerate(lines):
+        if line.strip() == target:
+            return idx
+    fail(f"missing marker: {target}")
+
+
 def section_start_index(lines: list[str], header_idx: int) -> int:
     start_idx = header_idx - 1
     if start_idx < 0 or lines[start_idx] != SEPARATOR_LINE:
@@ -112,70 +125,96 @@ def section_end_index(lines: list[str], next_header_idx: int | None) -> int:
                 return idx
         fail("could not find the final section end")
 
-    assert next_header_idx is not None
     end_idx: int = next_header_idx - 2
     if end_idx < 0:
         fail("invalid section boundary before the next header")
     return end_idx
 
 
-def build_section_file(section_lines: list[str], uses_gh: bool) -> list[str]:
+def section_body(lines: list[str]) -> list[str]:
     do_idx = -1
-    for idx, line in enumerate(section_lines):
-        if line == "do":
+    end_idx = -1
+    for idx, line in enumerate(lines):
+        if line == "do" and do_idx < 0:
             do_idx = idx
-            break
 
     if do_idx < 0:
         fail("section did not contain a top-level do block")
 
-    end_idx: int = -1
-    for idx in range(len(section_lines) - 1, do_idx, -1):
-        if section_lines[idx] == "end":
+    for idx in range(len(lines) - 1, do_idx, -1):
+        if lines[idx] == "end":
             end_idx = idx
             break
 
     if end_idx < 0:
         fail("section did not contain a matching end block")
 
-    header = section_lines[:do_idx]
-    body = section_lines[do_idx : end_idx + 1]
+    return lines[do_idx + 1 : end_idx]
 
+
+def dedent_block(lines: list[str]) -> list[str]:
+    dedented: list[str] = []
+    for line in lines:
+        if line.startswith("  "):
+            dedented.append(line[2:])
+        else:
+            dedented.append(line)
+    return dedented
+
+
+def build_section_module(lines: list[str], uses_gh: bool) -> list[str]:
+    body = dedent_block(section_body(lines))
     if uses_gh:
-        return [*header, "", *GH_HELPER, "", *body]
+        return [*GH_HELPER, "", *body]
+    return body
 
-    return [*header, *body]
+
+def split_section_1(lines: list[str]) -> tuple[list[str], list[str]]:
+    body = section_body(lines)
+    keymaps_idx = find_line_index(body, SECTION1_KEYMAPS_MARKER)
+    autocmds_idx = find_line_index(body, SECTION1_AUTOCMDS_MARKER)
+
+    options_lines = dedent_block([*body[:keymaps_idx], *body[autocmds_idx:]])
+    keymaps_lines = dedent_block(body[keymaps_idx:autocmds_idx])
+    return options_lines, keymaps_lines
 
 
-def build_loader_lines() -> list[str]:
-    lines = ["-- Load the split sections in order.", ""]
-    lines.extend([f"require '{spec.module}'" for spec in FILE_SECTION_SPECS])
+def build_plugin_loader() -> list[str]:
+    lines = ["-- Load plugin modules in order.", ""]
+    lines.extend([f"require '{spec.module}'" for spec in FILE_SPECS[1:]])
     return lines
 
 
-def build_root_init(
-    prelude: list[str], loader_lines: list[str], inline_sections: list[list[str]], postlude: list[str]
-) -> list[str]:
+def build_root_init(prelude: list[str], examples_lines: list[str], postlude: list[str]) -> list[str]:
     root = list(prelude)
-    root = [line.replace("Single-file", "Modular") for line in root]
     if root and root[-1] != "":
         root.append("")
-    root.extend(loader_lines)
 
-    if inline_sections:
-        root.append("")
-        for idx, section_lines in enumerate(inline_sections):
-            root.extend(section_lines)
-            if idx + 1 < len(inline_sections):
-                root.append("")
+    root.extend(
+        [
+            "-- [[ Setting options ]]",
+            "require 'options'",
+            "",
+            "-- [[ Basic Keymaps ]]",
+            "require 'keymaps'",
+            "",
+            "-- [[ Set up vim.pack ]]",
+            "require 'pack'",
+            "",
+            "-- [[ Configure and install plugins ]]",
+            "require 'kickstart.plugins'",
+            "",
+        ]
+    )
 
+    root.extend(examples_lines)
     root.extend(postlude)
     return root
 
 
 def build_outputs(source_lines: list[str]) -> dict[Path, list[str]]:
     headers = find_section_headers(source_lines)
-    expected_numbers = [spec.number for spec in ALL_SECTION_SPECS]
+    expected_numbers = ALL_SECTION_NUMBERS
     if sorted(headers) != expected_numbers:
         fail(f"section markers do not match expected set: found {sorted(headers)}, expected {expected_numbers}")
 
@@ -187,34 +226,42 @@ def build_outputs(source_lines: list[str]) -> dict[Path, list[str]]:
     first_section_start_idx = section_start_index(source_lines, first_header_idx)
     prelude = source_lines[:first_section_start_idx]
 
-    last_section_end_idx = section_end_index(source_lines, None)
-    postlude = source_lines[last_section_end_idx + 1 :]
+    section_1_idx = headers[1]
+    section_2_idx = headers[2]
+    section_3_idx = headers[3]
+    section_4_idx = headers[4]
+    section_5_idx = headers[5]
+    section_6_idx = headers[6]
+    section_7_idx = headers[7]
+    section_8_idx = headers[8]
+    section_9_idx = headers[9]
 
-    inline_sections: list[list[str]] = []
-    for spec in INLINE_SECTION_SPECS:
-        header_idx = headers[spec.number]
-        start_idx = section_start_index(source_lines, header_idx)
-        end_idx = section_end_index(source_lines, None)
-        section_lines = source_lines[start_idx : end_idx + 1]
-        inline_sections.append(section_lines)
+    section_1_lines = source_lines[section_start_index(source_lines, section_1_idx) : section_end_index(source_lines, section_2_idx) + 1]
+    section_2_lines = source_lines[section_start_index(source_lines, section_2_idx) : section_end_index(source_lines, section_3_idx) + 1]
+    section_3_lines = source_lines[section_start_index(source_lines, section_3_idx) : section_end_index(source_lines, section_4_idx) + 1]
+    section_4_lines = source_lines[section_start_index(source_lines, section_4_idx) : section_end_index(source_lines, section_5_idx) + 1]
+    section_5_lines = source_lines[section_start_index(source_lines, section_5_idx) : section_end_index(source_lines, section_6_idx) + 1]
+    section_6_lines = source_lines[section_start_index(source_lines, section_6_idx) : section_end_index(source_lines, section_7_idx) + 1]
+    section_7_lines = source_lines[section_start_index(source_lines, section_7_idx) : section_end_index(source_lines, section_8_idx) + 1]
+    section_8_lines = source_lines[section_start_index(source_lines, section_8_idx) : section_end_index(source_lines, section_9_idx) + 1]
+    section_9_lines = source_lines[section_start_index(source_lines, section_9_idx) : section_end_index(source_lines, None) + 1]
+
+    options_lines, keymaps_lines = split_section_1(section_1_lines)
+    examples_lines = section_9_lines
 
     outputs: dict[Path, list[str]] = {
-        Path("init.lua"): build_root_init(prelude, build_loader_lines(), inline_sections, postlude),
+        Path("init.lua"): build_root_init(prelude, examples_lines, source_lines[section_end_index(source_lines, None) + 1 :]),
+        Path("lua/options.lua"): options_lines,
+        Path("lua/keymaps.lua"): keymaps_lines,
+        Path("lua/pack.lua"): build_section_module(section_2_lines, False),
+        Path("lua/kickstart/plugins/init.lua"): build_plugin_loader(),
+        Path("lua/kickstart/plugins/ui.lua"): build_section_module(section_3_lines, True),
+        Path("lua/kickstart/plugins/search.lua"): build_section_module(section_4_lines, True),
+        Path("lua/kickstart/plugins/lsp.lua"): build_section_module(section_5_lines, True),
+        Path("lua/kickstart/plugins/formatting.lua"): build_section_module(section_6_lines, True),
+        Path("lua/kickstart/plugins/completion.lua"): build_section_module(section_7_lines, True),
+        Path("lua/kickstart/plugins/treesitter.lua"): build_section_module(section_8_lines, True),
     }
-
-    for idx, spec in enumerate(FILE_SECTION_SPECS):
-        header_idx = headers[spec.number]
-        next_header_idx = (
-            headers[FILE_SECTION_SPECS[idx + 1].number]
-            if idx + 1 < len(FILE_SECTION_SPECS)
-            else headers[INLINE_SECTION_SPECS[0].number]
-        )
-        start_idx = section_start_index(source_lines, header_idx)
-        end_idx = section_end_index(source_lines, next_header_idx)
-        section_lines = source_lines[start_idx : end_idx + 1]
-        outputs[Path("lua") / "kickstart" / "sections" / spec.filename] = build_section_file(
-            section_lines, spec.uses_gh
-        )
 
     return outputs
 
