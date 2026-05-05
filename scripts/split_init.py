@@ -6,9 +6,8 @@ This script is intentionally repo-specific. It understands the current section
 markers in the single-file init.lua and emits the modular tree into a separate
 output root:
 
-* init.lua loader
-* lua/kickstart/sections/init.lua loader
-* one Lua file per section
+* init.lua loader plus the examples block
+* one Lua file per core section
 
 Use --write to update files and --check to verify them.
 """
@@ -40,7 +39,7 @@ class CliArgs:
     check: bool
 
 
-SECTION_SPECS = [
+FILE_SECTION_SPECS = [
     SectionSpec(1, "section_01_foundation.lua", "kickstart.sections.section_01_foundation"),
     SectionSpec(2, "section_02_plugin_manager.lua", "kickstart.sections.section_02_plugin_manager"),
     SectionSpec(3, "section_03_ui.lua", "kickstart.sections.section_03_ui", uses_gh=True),
@@ -49,8 +48,13 @@ SECTION_SPECS = [
     SectionSpec(6, "section_06_formatting.lua", "kickstart.sections.section_06_formatting", uses_gh=True),
     SectionSpec(7, "section_07_completion.lua", "kickstart.sections.section_07_completion", uses_gh=True),
     SectionSpec(8, "section_08_treesitter.lua", "kickstart.sections.section_08_treesitter", uses_gh=True),
+]
+
+INLINE_SECTION_SPECS = [
     SectionSpec(9, "section_09_examples.lua", "kickstart.sections.section_09_examples"),
 ]
+
+ALL_SECTION_SPECS = [*FILE_SECTION_SPECS, *INLINE_SECTION_SPECS]
 
 SECTION_HEADER_RE = re.compile(r"^-- SECTION (?P<number>\d+): (?P<title>.+)$")
 SEPARATOR_LINE = "-- ============================================================"
@@ -143,30 +147,35 @@ def build_section_file(section_lines: list[str], uses_gh: bool) -> list[str]:
     return [*header, *body]
 
 
-def build_root_init(prelude: list[str], postlude: list[str]) -> list[str]:
+def build_loader_lines() -> list[str]:
+    lines = ["-- Load the split sections in order.", ""]
+    lines.extend([f"require '{spec.module}'" for spec in FILE_SECTION_SPECS])
+    return lines
+
+
+def build_root_init(
+    prelude: list[str], loader_lines: list[str], inline_sections: list[list[str]], postlude: list[str]
+) -> list[str]:
     root = list(prelude)
     root = [line.replace("Single-file", "Modular") for line in root]
     if root and root[-1] != "":
         root.append("")
-    root.extend(
-        [
-            "-- Load the split sections in order.",
-            "require 'kickstart.sections'",
-        ]
-    )
+    root.extend(loader_lines)
+
+    if inline_sections:
+        root.append("")
+        for idx, section_lines in enumerate(inline_sections):
+            root.extend(section_lines)
+            if idx + 1 < len(inline_sections):
+                root.append("")
+
     root.extend(postlude)
     return root
 
 
-def build_sections_init() -> list[str]:
-    lines = ["-- Load the split sections in order.", ""]
-    lines.extend([f"require '{spec.module}'" for spec in SECTION_SPECS])
-    return lines
-
-
 def build_outputs(source_lines: list[str]) -> dict[Path, list[str]]:
     headers = find_section_headers(source_lines)
-    expected_numbers = [spec.number for spec in SECTION_SPECS]
+    expected_numbers = [spec.number for spec in ALL_SECTION_SPECS]
     if sorted(headers) != expected_numbers:
         fail(f"section markers do not match expected set: found {sorted(headers)}, expected {expected_numbers}")
 
@@ -181,18 +190,31 @@ def build_outputs(source_lines: list[str]) -> dict[Path, list[str]]:
     last_section_end_idx = section_end_index(source_lines, None)
     postlude = source_lines[last_section_end_idx + 1 :]
 
+    inline_sections: list[list[str]] = []
+    for spec in INLINE_SECTION_SPECS:
+        header_idx = headers[spec.number]
+        start_idx = section_start_index(source_lines, header_idx)
+        end_idx = section_end_index(source_lines, None)
+        section_lines = source_lines[start_idx : end_idx + 1]
+        inline_sections.append(section_lines)
+
     outputs: dict[Path, list[str]] = {
-        Path("init.lua"): build_root_init(prelude, postlude),
-        Path("lua/kickstart/sections/init.lua"): build_sections_init(),
+        Path("init.lua"): build_root_init(prelude, build_loader_lines(), inline_sections, postlude),
     }
 
-    for idx, spec in enumerate(SECTION_SPECS):
+    for idx, spec in enumerate(FILE_SECTION_SPECS):
         header_idx = headers[spec.number]
-        next_header_idx = headers[SECTION_SPECS[idx + 1].number] if idx + 1 < len(SECTION_SPECS) else None
+        next_header_idx = (
+            headers[FILE_SECTION_SPECS[idx + 1].number]
+            if idx + 1 < len(FILE_SECTION_SPECS)
+            else headers[INLINE_SECTION_SPECS[0].number]
+        )
         start_idx = section_start_index(source_lines, header_idx)
         end_idx = section_end_index(source_lines, next_header_idx)
         section_lines = source_lines[start_idx : end_idx + 1]
-        outputs[Path("lua/kickstart/sections") / spec.filename] = build_section_file(section_lines, spec.uses_gh)
+        outputs[Path("lua") / "kickstart" / "sections" / spec.filename] = build_section_file(
+            section_lines, spec.uses_gh
+        )
 
     return outputs
 
