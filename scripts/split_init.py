@@ -132,12 +132,6 @@ def find_section_headers(lines: list[str]) -> dict[int, int]:
     return headers
 
 
-def find_line_index(lines: list[str], target: str) -> int:
-    for idx, line in enumerate(lines):
-        if line.strip() == target:
-            return idx
-    fail(f"missing marker: {target}")
-
 
 def section_start_index(lines: list[str], header_idx: int) -> int:
     start_idx = header_idx - 1
@@ -249,21 +243,15 @@ def build_outputs(source_lines: list[str]) -> dict[Path, list[str]]:
         end = section_end_index(source_lines, next_idx)
         section_lines.append(source_lines[start : end + 1])
 
-    options_body = dedent_block(section_body(section_lines[0]))
-    keymaps_body = dedent_block(section_body(section_lines[1]))
-    pack_body = build_section_module(section_lines[2], False)
-
+    spec_by_number = {spec.number: spec for spec in FILE_SPECS}
     outputs: dict[Path, list[str]] = {
         Path("init.lua"): build_root_init(prelude, source_lines[section_end_index(source_lines, None) + 1 :]),
-        Path("lua/options.lua"): [*make_header(1, section_headers[1]), *options_body],
-        Path("lua/keymaps.lua"): [*make_header(2, section_headers[2]), *keymaps_body],
-        Path("lua/pack.lua"): [*make_header(3, section_headers[3]), *pack_body],
         Path("lua/kickstart/plugins/init.lua"): [*build_plugin_loader(), "", *make_header(10, section_headers[10]), *build_section_module(section_lines[9], False)],
     }
 
-    for spec in FILE_SPECS[3:]:
-        idx = spec.number - 1
-        outputs[spec.path] = [*make_header(spec.number, section_headers[spec.number]), *build_section_module(section_lines[idx], spec.uses_gh)]
+    for i, number in enumerate(expected_numbers[:9]):
+        spec = spec_by_number[number]
+        outputs[spec.path] = [*make_header(number, section_headers[number]), *build_section_module(section_lines[i], spec.uses_gh)]
 
     return outputs
 
