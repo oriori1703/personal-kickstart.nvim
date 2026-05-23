@@ -82,7 +82,8 @@ vim.keymap.set('n', '<Leader>lp', function() require('dap').set_breakpoint(nil, 
 -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
 vim.keymap.set('n', '<F7>', function() require('dap-view').toggle() end, { desc = 'Debug: See last session result.' })
 
-require('dap.ext.vscode').json_decode = require('json5').parse
+local ok, json5 = pcall(require, 'json5')
+if ok then require('dap.ext.vscode').json_decode = json5.parse end
 
 require('mason-nvim-dap').setup {
   -- Makes a best effort to setup the various debuggers with
