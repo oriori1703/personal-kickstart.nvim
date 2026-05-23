@@ -16,9 +16,13 @@ return {
   dependencies = {
     {
       'mfussenegger/nvim-dap',
-      config = function() require('dap.ext.vscode').json_decode = require('json5').parse end,
+      config = function()
+        local ok, json5 = pcall(require, 'json5')
+        if ok then require('dap.ext.vscode').json_decode = json5.parse end
+      end,
       dependencies = {
         {
+          cond = function() return vim.fn.executable 'cargo' == 1 end,
           'Joakker/lua-json5',
           build = './install.sh',
         },
