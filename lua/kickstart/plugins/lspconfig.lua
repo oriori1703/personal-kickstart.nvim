@@ -132,6 +132,11 @@ vim.pack.add { gh 'b0o/schemastore.nvim' } -- Provides the SchemaStore catalog f
 --  See `:help lsp-config` for information about keys and how to configure
 ---@type table<string, vim.lsp.Config>
 local servers = {
+  -- typos and grammar checking
+  -- harper_ls = {},
+  typos_lsp = {},
+  -- codebook = {},
+
   jdtls = {},
   kotlin_lsp = {},
   -- clangd = {},
