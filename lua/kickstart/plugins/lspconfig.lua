@@ -41,6 +41,7 @@ return {
 
       -- Provides the SchemaStore catalog for use with jsonls and yamlls
       'b0o/schemastore.nvim',
+      { 'nvim-java/nvim-java', opts = {} },
     },
     config = vim.schedule_wrap(function()
       -- Brief aside: **What is LSP?**
@@ -169,6 +170,8 @@ return {
       --  See `:help lsp-config` for information about keys and how to configure
       ---@type table<string, vim.lsp.Config>
       local servers = {
+        jdtls = {},
+        kotlin_lsp = {},
         -- clangd = {},
         -- gopls = {},
         basedpyright = {},
