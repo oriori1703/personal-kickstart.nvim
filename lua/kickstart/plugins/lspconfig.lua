@@ -132,6 +132,8 @@ vim.pack.add { gh 'b0o/schemastore.nvim' } -- Provides the SchemaStore catalog f
 --  See `:help lsp-config` for information about keys and how to configure
 ---@type table<string, vim.lsp.Config>
 local servers = {
+  jdtls = {},
+  kotlin_lsp = {},
   -- clangd = {},
   -- gopls = {},
   basedpyright = {},
@@ -209,6 +211,7 @@ vim.pack.add {
   gh 'mason-org/mason-lspconfig.nvim',
   gh 'WhoIsSethDaniel/mason-tool-installer.nvim',
   gh 'folke/lazydev.nvim',
+  gh 'nvim-java/nvim-java',
 }
 
 -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
@@ -219,6 +222,8 @@ require('lazydev').setup {
     { path = 'nvim-lspconfig', words = { 'lspconfig' } },
   },
 }
+
+require('java').setup()
 
 -- Automatically install LSPs and related tools to stdpath for Neovim
 require('mason').setup {}
