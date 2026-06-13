@@ -15,10 +15,7 @@ require('obsidian').setup {
     -- },
   },
   picker = {
-    name = 'snacks.pick',
-  },
-  completion = {
-    blink = true,
+    name = 'snacks.picker',
   },
   ---@diagnostic disable-next-line: missing-fields
   ui = { enable = false },
