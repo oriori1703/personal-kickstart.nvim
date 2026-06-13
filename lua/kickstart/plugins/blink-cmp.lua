@@ -75,7 +75,7 @@ require('blink.cmp').setup {
     providers = {
       lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
       buffer = {
-        -- Make buffer compeletions appear at the end.
+        -- Make buffer completions appear at the end.
         score_offset = -100,
         enabled = function()
           -- Filetypes for which buffer completions are enabled; add filetypes to extend:
