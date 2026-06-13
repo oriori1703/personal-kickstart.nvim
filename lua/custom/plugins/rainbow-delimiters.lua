@@ -1,6 +1,1 @@
---- @module 'lazy'
---- @type LazySpec
-return {
-  'HiPhish/rainbow-delimiters.nvim',
-  submodules = false,
-}
+vim.pack.add { 'https://github.com/HiPhish/rainbow-delimiters.nvim' }
