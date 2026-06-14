@@ -23,13 +23,15 @@ mirror_nvim_plugin() {
 }
 
 mirror_nvim_plugins() {
-	local plugin_dir="$HOME/.local/share/nvim/lazy"
+	local plugin_dir="${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/pack/core/opt"
 	local mirror_dir="/tmp/mirror/plugins"
 
 	mkdir -p "$mirror_dir"
 
-	find "$plugin_dir" -mindepth 1 -maxdepth 1 | while read -r full_name; do
-		mirror_nvim_plugin "$full_name"
+	find "$plugin_dir" -mindepth 1 -maxdepth 1 -type d | while read -r full_name; do
+		if [ -d "$full_name/.git" ]; then
+			mirror_nvim_plugin "$full_name"
+		fi
 	done
 
 	mirror_mason_registry
@@ -42,7 +44,7 @@ mkdir -p /tmp/mirror
 git clone git@github.com:oriori1703/kickstart-modular.nvim.git /tmp/mirror/config-nvim
 
 mirror_nvim_plugins
-cp -r ~/.local/share/nvim/ /tmp/mirror/nvim-share
+cp -r "${XDG_DATA_HOME:-$HOME/.local/share}/nvim/" /tmp/mirror/nvim-share
 
 cd /tmp || exit 1
 zip -r mirror.zip mirror
