@@ -1,12 +1,5 @@
 vim.pack.add {
   'https://github.com/folke/sidekick.nvim',
-  'https://github.com/zbirenbaum/copilot.lua',
-}
-
-require('copilot').setup {
-  suggestion = { enable = false },
-  panel = { enabled = false },
-  filetypes = { markdown = true, help = true },
 }
 
 require('sidekick').setup {
