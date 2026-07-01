@@ -139,8 +139,8 @@ local servers = {
   typos_lsp = {},
   -- codebook = {},
 
-  jdtls = {},
-  kotlin_lsp = {},
+  -- jdtls = {},
+  -- kotlin_lsp = {},
   -- clangd = {},
   -- gopls = {},
   basedpyright = {},
@@ -218,10 +218,10 @@ vim.pack.add {
   gh 'mason-org/mason-lspconfig.nvim',
   gh 'WhoIsSethDaniel/mason-tool-installer.nvim',
   gh 'folke/lazydev.nvim',
-  gh 'nvim-java/nvim-java',
-  gh 'MunifTanjim/nui.nvim',
-  gh 'mfussenegger/nvim-dap',
-  { src = gh 'JavaHello/spring-boot.nvim', version = '218c0c26c14d99feca778e4d13f5ec3e8b1b60f0' },
+  -- gh 'nvim-java/nvim-java',
+  -- gh 'MunifTanjim/nui.nvim',
+  -- gh 'mfussenegger/nvim-dap',
+  -- { src = gh 'JavaHello/spring-boot.nvim', version = '218c0c26c14d99feca778e4d13f5ec3e8b1b60f0' },
 }
 
 -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
@@ -233,7 +233,7 @@ require('lazydev').setup {
   },
 }
 
-require('java').setup()
+-- require('java').setup()
 
 -- Automatically install LSPs and related tools to stdpath for Neovim
 require('mason').setup {}

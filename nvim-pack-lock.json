@@ -70,10 +70,6 @@
       "rev": "c248713d3530710f67ec804cfbdfcd5b02b19dee",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
-    "nui.nvim": {
-      "rev": "de740991c12411b663994b2860f1a4fd0937c130",
-      "src": "https://github.com/MunifTanjim/nui.nvim"
-    },
     "nvim-autopairs": {
       "rev": "7b9923abad60b903ece7c52940e1321d39eccc79",
       "src": "https://github.com/windwp/nvim-autopairs"
@@ -89,10 +85,6 @@
     "nvim-dap-view": {
       "rev": "440ec66c2b26470ec97cd4d6667cdd4b51cbc7cb",
       "src": "https://github.com/igorlfs/nvim-dap-view"
-    },
-    "nvim-java": {
-      "rev": "f36a376dfebbbb4cf382008ea6e8b70d40049112",
-      "src": "https://github.com/nvim-java/nvim-java"
     },
     "nvim-lint": {
       "rev": "a219b2c9e5b4765e5c845aba119dad55806fcaf1",
@@ -139,11 +131,6 @@
     "snacks.nvim": {
       "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",
       "src": "https://github.com/folke/snacks.nvim"
-    },
-    "spring-boot.nvim": {
-      "rev": "218c0c26c14d99feca778e4d13f5ec3e8b1b60f0",
-      "src": "https://github.com/JavaHello/spring-boot.nvim",
-      "version": "'218c0c26c14d99feca778e4d13f5ec3e8b1b60f0'"
     },
     "statuscol.nvim": {
       "rev": "c46172d0911aa5d49ba5f39f4351d1bb7aa289cc",
