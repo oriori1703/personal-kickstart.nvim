@@ -6,10 +6,10 @@ require('obsidian').setup {
       name = 'personal',
       path = '~/Documents/vaults/personal',
     },
-    -- {
-    --   name = 'work',
-    --   path = '~/Documents/vaults/work',
-    -- },
+    {
+      name = 'work',
+      path = '~/Documents/vaults/work',
+    },
   },
   picker = {
     name = 'snacks.picker',
