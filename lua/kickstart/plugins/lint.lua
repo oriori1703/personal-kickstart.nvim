@@ -3,6 +3,12 @@
 vim.pack.add { 'https://github.com/mfussenegger/nvim-lint' }
 
 local lint = require 'lint'
+lint.linters['markdownlint-cli2'].args = {
+  '--config',
+  vim.fs.joinpath(vim.fn.stdpath 'config', '.markdownlint-cli2.yaml'),
+  '-',
+}
+
 lint.linters_by_ft = {
   markdown = { 'markdownlint-cli2' }, -- Make sure to install `markdownlint-cli2` via mason / npm
 }
