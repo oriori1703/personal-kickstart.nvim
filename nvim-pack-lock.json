@@ -31,7 +31,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fyler.nvim": {
-      "rev": "f25cc85639e33bb506bf2103e8800a134a8cbac3",
+      "rev": "60c75b81f93e5093ecc7a9e6d2aeea35291a5aa0",
       "src": "https://github.com/A7Lavinraj/fyler.nvim"
     },
     "gitsigns.nvim": {
@@ -51,7 +51,7 @@
       "src": "https://github.com/Joakker/lua-json5"
     },
     "mason-lspconfig.nvim": {
-      "rev": "a4068c3ebd4cb335b25239e5ea35c22ee6007962",
+      "rev": "7adc933dabcc7c86ae6b07aff7ee68eac398491f",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason-nvim-dap.nvim": {
@@ -67,7 +67,7 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "05a80b0340a92136a93ab04346cf97de3f165948",
+      "rev": "9459d7f41ae77d909579dab0aea2bdd3210fac9f",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "nui.nvim": {
@@ -99,7 +99,7 @@
       "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "d5b6e3db4c17b0146f63a2fc47e2027a754b2cb1",
+      "rev": "e7ca2c95ba316a8b846d3f3546d407908c5c4ccb",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-origami": {
@@ -107,7 +107,7 @@
       "src": "https://github.com/chrisgrieser/nvim-origami"
     },
     "nvim-treesitter": {
-      "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
+      "rev": "24977147550d53589e53b874ec75e14e4fbc304e",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
@@ -125,7 +125,7 @@
       "src": "https://github.com/HiPhish/rainbow-delimiters.nvim"
     },
     "schemastore.nvim": {
-      "rev": "e954496f8ef22904e8a84f5078f4a110fdc7a0d3",
+      "rev": "0df41ab13b54151fcb6ab023cc2a761482070f76",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "sidekick.nvim": {
