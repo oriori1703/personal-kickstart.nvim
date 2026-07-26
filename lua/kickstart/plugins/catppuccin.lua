@@ -7,15 +7,7 @@ local function gh(repo) return 'https://github.com/' .. repo end
 --
 -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
 vim.pack.add { { src = gh 'catppuccin/nvim', name = 'catppuccin' } }
----@diagnostic disable-next-line: missing-fields
-require('catppuccin').setup {
-  integrations = {
-    blink_cmp = true,
-    snacks = true,
-    which_key = true,
-    mini = true,
-  },
-}
+require('catppuccin').setup {}
 
 -- Load the colorscheme here.
 -- Like many other themes, this one has different styles, and you could load
