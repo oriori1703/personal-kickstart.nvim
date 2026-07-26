@@ -15,7 +15,7 @@
       "version": "1.0.0 - 2.0.0"
     },
     "catppuccin": {
-      "rev": "05e8787020dcfdb937bf2ff23855ea2415b4e072",
+      "rev": "79e2049a0fdf7ec840f8463fe1d962c94493196b",
       "src": "https://github.com/catppuccin/nvim"
     },
     "conform.nvim": {
@@ -31,7 +31,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fyler.nvim": {
-      "rev": "60c75b81f93e5093ecc7a9e6d2aeea35291a5aa0",
+      "rev": "bc1f8e420f566dd3b3db1f0aff2e6932947bdd71",
       "src": "https://github.com/A7Lavinraj/fyler.nvim"
     },
     "gitsigns.nvim": {
@@ -67,7 +67,7 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "9459d7f41ae77d909579dab0aea2bdd3210fac9f",
+      "rev": "946ae64e0ee807ae3c41f382f0114b4ed4915b2c",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "nui.nvim": {
@@ -99,7 +99,7 @@
       "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "e7ca2c95ba316a8b846d3f3546d407908c5c4ccb",
+      "rev": "7ab79bb1b57160a537f427ac8a6026102f12b701",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-origami": {
@@ -107,7 +107,7 @@
       "src": "https://github.com/chrisgrieser/nvim-origami"
     },
     "nvim-treesitter": {
-      "rev": "24977147550d53589e53b874ec75e14e4fbc304e",
+      "rev": "61df84986b4b4ec469ee745a182e433d49f8c27e",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
@@ -116,7 +116,7 @@
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-context"
     },
     "obsidian.nvim": {
-      "rev": "4bf07e502c4e35425a0bfc3438232a10971c1355",
+      "rev": "69fe7c6bf61a5222b5061a9a9dfc5023f2ec0fdc",
       "src": "https://github.com/obsidian-nvim/obsidian.nvim",
       "version": ">=0.0.0"
     },
@@ -129,7 +129,7 @@
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "schemastore.nvim": {
-      "rev": "0df41ab13b54151fcb6ab023cc2a761482070f76",
+      "rev": "3d2c297f7152208daf4a382ea7123f9e4ebf9da1",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "sidekick.nvim": {
