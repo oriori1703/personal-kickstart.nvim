@@ -31,7 +31,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fyler.nvim": {
-      "rev": "bc1f8e420f566dd3b3db1f0aff2e6932947bdd71",
+      "rev": "33b2ef22acf7eb683cfc652bf3d1049546f28661",
       "src": "https://github.com/A7Lavinraj/fyler.nvim"
     },
     "gitsigns.nvim": {
@@ -51,7 +51,7 @@
       "src": "https://github.com/Joakker/lua-json5"
     },
     "mason-lspconfig.nvim": {
-      "rev": "7adc933dabcc7c86ae6b07aff7ee68eac398491f",
+      "rev": "67029ccdac1ef8941e13b826417bc0ffac24cc86",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason-nvim-dap.nvim": {
@@ -67,7 +67,7 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "946ae64e0ee807ae3c41f382f0114b4ed4915b2c",
+      "rev": "3e47ec3709716177bf28e2d17e35c7ab39db126e",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "nui.nvim": {
@@ -87,7 +87,7 @@
       "src": "https://github.com/mfussenegger/nvim-dap-python"
     },
     "nvim-dap-view": {
-      "rev": "b8c8aa91f42055d7f69012587cde4f1d99f2a701",
+      "rev": "210b2c0e4acc08aad23fbd5a7989dd0169f716d0",
       "src": "https://github.com/igorlfs/nvim-dap-view"
     },
     "nvim-java": {
@@ -99,20 +99,20 @@
       "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "7ab79bb1b57160a537f427ac8a6026102f12b701",
+      "rev": "43ed3797b266e1ee8d222e491379ad471c9d3146",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-origami": {
-      "rev": "02312301df125908031b27dc556adb4cd81893d6",
+      "rev": "a137d35eaabb7cd7be89228229c1aa5b057f5ed7",
       "src": "https://github.com/chrisgrieser/nvim-origami"
     },
     "nvim-treesitter": {
-      "rev": "61df84986b4b4ec469ee745a182e433d49f8c27e",
+      "rev": "3d3321b560a63ff92a8692401f303a5123336b86",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
     "nvim-treesitter-context": {
-      "rev": "b311b30818951d01f7b4bf650521b868b3fece16",
+      "rev": "f3061339b8eaf9fda873600bc425b8d2d8502533",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-context"
     },
     "obsidian.nvim": {
@@ -121,7 +121,7 @@
       "version": ">=0.0.0"
     },
     "rainbow-delimiters.nvim": {
-      "rev": "a798325b7f36acc62741d1029930a7b96d4dd4bf",
+      "rev": "012f1480cd9a5fc99fce7678e0a536421a53fc46",
       "src": "https://github.com/HiPhish/rainbow-delimiters.nvim"
     },
     "render-markdown.nvim": {
@@ -129,7 +129,7 @@
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "schemastore.nvim": {
-      "rev": "3d2c297f7152208daf4a382ea7123f9e4ebf9da1",
+      "rev": "a652fcc01bf03946ab94b815be8c80ee157cbe1a",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "sidekick.nvim": {
