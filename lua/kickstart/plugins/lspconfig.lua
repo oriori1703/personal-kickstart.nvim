@@ -136,7 +136,6 @@ local servers = {
 
   -- typos and grammar checking
   -- harper_ls = {},
-  typos_lsp = {},
   -- codebook = {},
 
   jdtls = {},
@@ -258,6 +257,8 @@ vim.list_extend(ensure_installed, {
   -- bash
   'shellcheck',
   'shfmt',
+  -- LSPs that should not be auto-enabled
+  'typos_lsp',
 })
 
 require('mason-tool-installer').setup { ensure_installed = ensure_installed }
