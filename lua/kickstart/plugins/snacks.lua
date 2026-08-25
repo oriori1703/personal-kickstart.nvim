@@ -30,6 +30,7 @@ vim.pack.add { 'https://github.com/folke/snacks.nvim' }
 
 require('snacks').setup {
   picker = {},
+  bigfile = {},
   lazygit = {},
   image = { doc = { inline = false } },
   indent = {
