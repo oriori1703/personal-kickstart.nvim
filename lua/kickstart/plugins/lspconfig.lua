@@ -142,7 +142,8 @@ local servers = {
   kotlin_lsp = {},
   -- clangd = {},
   -- gopls = {},
-  basedpyright = {},
+  -- basedpyright = {},
+  ty = {},
   ruff = {
     on_attach = function(client) client.server_capabilities.hoverProvider = false end,
   },
