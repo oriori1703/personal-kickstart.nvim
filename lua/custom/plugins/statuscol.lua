@@ -1,7 +1,11 @@
 -- Provide a configurable 'statuscolumn' and click handlers
 vim.pack.add { 'https://github.com/luukvbaal/statuscol.nvim' }
 
-vim.opt.fillchars = vim.g.have_nerd_font and { foldclose = '', foldopen = '', foldsep = ' ' } or { foldclose = '˃', foldopen = '˅', foldsep = ' ' }
+if vim.g.have_nerd_font then
+  vim.opt.fillchars = { foldclose = '', foldopen = '', foldsep = ' ', foldinner = ' ' }
+else
+  vim.opt.fillchars = { foldclose = '˃', foldopen = '˅', foldsep = ' ', foldinner = ' ' }
+end
 vim.o.foldcolumn = '1'
 
 local builtin = require 'statuscol.builtin'
