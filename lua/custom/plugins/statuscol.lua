@@ -10,7 +10,7 @@ require('statuscol').setup {
   relculright = true, -- whether to right-align the cursor line number with 'relativenumber' set
   segments = {
     {
-      sign = { namespace = { 'diagnostic/signs' } },
+      sign = { namespace = { 'diagnostic.signs' } },
       click = 'v:lua.ScSa',
     },
     {
