@@ -51,7 +51,7 @@
       "src": "https://github.com/Joakker/lua-json5"
     },
     "mason-lspconfig.nvim": {
-      "rev": "24d4ab0838b250753b307a8747ade06dc99aed9d",
+      "rev": "40276c4df7e6bdce6801d6c035c6227f9115a855",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason-nvim-dap.nvim": {
@@ -67,7 +67,7 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "0caecdd7408bc0a77697a83b931c742fcc5b0349",
+      "rev": "a311ed247d527db9592bb434356badc705363746",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "nui.nvim": {
@@ -95,11 +95,11 @@
       "src": "https://github.com/nvim-java/nvim-java"
     },
     "nvim-lint": {
-      "rev": "0370fe965697aa8f04252a1562441bdc13723cd1",
+      "rev": "3d55c8f67c6ae5c15e1042571e107c7a3d5c5f4e",
       "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "af9adce488c75ca0a81017945c2b7fa7b461bc23",
+      "rev": "16286347bdba1333c7d124d9de9fe6630731b2b2",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-origami": {
@@ -107,7 +107,7 @@
       "src": "https://github.com/chrisgrieser/nvim-origami"
     },
     "nvim-treesitter": {
-      "rev": "8b98b4470eb326f1c7b50dae79f8c963568e5720",
+      "rev": "19071296d3d643b48615ee574a20e8a03ac40872",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
@@ -129,7 +129,7 @@
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "schemastore.nvim": {
-      "rev": "5f2a3b5dc13f3622000cb488c9af505b933152e3",
+      "rev": "2940d5e12f8797620cd47dca984d46119e1fa4b8",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "sidekick.nvim": {
