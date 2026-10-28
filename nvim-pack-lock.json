@@ -26,7 +26,7 @@
       "src": "https://github.com/j-hui/fidget.nvim"
     },
     "friendly-snippets": {
-      "rev": "b4d01b0fdf3c9a549961c2f9ffe8dc09be166219",
+      "rev": "b2ea5c41a150ba72fb656eedb4ed0a86d138d945",
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fyler.nvim": {
@@ -66,7 +66,7 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "ed8683521996657ce774e5eec9d2f9b1b5ecef82",
+      "rev": "a03ad899bda446b5a81cfa99d8aeeb92241522f3",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "nui.nvim": {
@@ -98,7 +98,7 @@
       "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "77b7432d4770d23b277d37923e5a08a442d8bb07",
+      "rev": "3bccb6fa49a3a75bfb6d92fed63b13a71a85cfaf",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-origami": {
@@ -115,12 +115,12 @@
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-context"
     },
     "obsidian.nvim": {
-      "rev": "a562bedd7b418a289b005cb4c62b1fe79066253b",
+      "rev": "15af492b64f4677959fe95008f1d5b782fe1f86a",
       "src": "https://github.com/obsidian-nvim/obsidian.nvim",
       "version": ">=0.0.0"
     },
     "rainbow-delimiters.nvim": {
-      "rev": "b55decda611755171bc5bf8f4c99603a75de4b41",
+      "rev": "65734f76783705255d9ede8a6e4692e1572801a5",
       "src": "https://github.com/HiPhish/rainbow-delimiters.nvim"
     },
     "render-markdown.nvim": {
@@ -128,7 +128,7 @@
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "schemastore.nvim": {
-      "rev": "067b472f6dbc04520982acc9ab14f27c68195c70",
+      "rev": "a59b43cffa5a11d80b4ca4fd6a52350ac7bd6104",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "sidekick.nvim": {
