@@ -121,6 +121,7 @@ local function ansi_colorize()
   vim.opt.listchars = { space = ' ' }
 
   local buf = vim.api.nvim_get_current_buf()
+  require('scrollback_links').attach(buf)
   vim.api.nvim_open_term(buf, {})
 
   vim.keymap.set('n', 'q', '<cmd>q<cr>', { silent = true, buffer = buf })
