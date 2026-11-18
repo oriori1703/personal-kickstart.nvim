@@ -31,7 +31,15 @@ vim.o.showmode = false
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
+vim.schedule(function()
+  vim.o.clipboard = 'unnamedplus'
+  if vim.env.REX_BLOCK and vim.fn.has('clipboard') == 0 then
+    vim.g.clipboard = 'osc52'
+    -- has('clipboard') cached the failed lookup; reload with the Rex fallback.
+    vim.g.loaded_clipboard_provider = nil
+    vim.cmd('runtime autoload/provider/clipboard.vim')
+  end
+end)
 
 -- Enable break indent
 vim.o.breakindent = true
